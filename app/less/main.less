@@ -1,5 +1,6 @@
 @color1: #909731;
-@color2: #342f7f	;
+@color2: #342f7f;
+@shadow-color: #111;
 
 @thumb-roundness: 50%;
 @thumb-height: 30px;
@@ -9,18 +10,24 @@
 @track-height: 10px;
 
 @range-roundness: 5px;
-@contrast: 10%;
+@contrast: 5%;
+
+@shadow-size: 1px;
+@shadow-blur: 1px;
+
+.shadow() {
+	box-shadow: @shadow-size @shadow-size @shadow-blur @shadow-color, 0px 0px @shadow-size lighten(@shadow-color,5%);
+}
 
 .track() {
+	.shadow();
 	width: @track-width;
 	height: @track-height;
-	box-shadow: black 1px 1px 1px;
 }
 
 .thumb() {
-	// border: none;
+	.shadow();
 	border: 1px solid pink;
-	box-shadow: black 1px 1px 1px;
 	height: @thumb-height;
 	width: @thumb-width;
 	border-radius: @thumb-roundness;
