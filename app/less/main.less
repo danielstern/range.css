@@ -1,15 +1,12 @@
-@color1: #883ca9;
-@color2: #ae3cae;
-@color3: #b33d90;
-@color4: #b83d6f;
-@color5: #bd3d4a;
+@color1: #909731;
+@color2: #342f7f	;
 
 @thumb-roundness: 50%;
-@thumb-height: 25px;
-@thumb-width: 25px;
+@thumb-height: 30px;
+@thumb-width: 30px;
 
 @track-width: 300px;
-@track-height: 5px;
+@track-height: 10px;
 
 
 input[type=range] {
@@ -25,7 +22,7 @@ input[type=range] {
 
     &::-webkit-slider-runnable-track {
         width: @track-width;
-        height: 5px;
+        height: @track-height;
         background: @color1;
         border: none;
         border-radius: 3px;
@@ -37,8 +34,13 @@ input[type=range] {
         height: @thumb-height;
         width: @thumb-width;
         border-radius: @thumb-roundness;
-        background: @color4;
-        margin-top: -(@thumb-height + @track-height) / 4;
+        background: @color2;
+        // margin-top: -@track-height;
+        // margin-top: -@thumb-height / 2;
+        // margin-top: -(@track-height + @thumb-height) / 2;
+        // position:absolute;
+        margin-top: (-@thumb-height / 2) + (@track-height / 4);
+
     }
     &:focus::-webkit-slider-runnable-track {
         background: lighten(@color1, 10%);
@@ -56,7 +58,7 @@ input[type=range] {
         height: @thumb-height;
         width: @thumb-width;
         border-radius: @thumb-roundness;
-        background: @color4;
+        background: @color2;
     }
 
     /*hide the outline behind the border*/
@@ -93,7 +95,7 @@ input[type=range] {
         height: @thumb-height;
         width: @thumb-width;
         border-radius: @thumb-roundness;
-        background: @color4;
+        background: @color2;
     }
     &:focus::-ms-fill-lower {
         background: @color1;
