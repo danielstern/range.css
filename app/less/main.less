@@ -5,8 +5,10 @@
 @thumb-height: 30px;
 @thumb-width: 30px;
 
-@track-width: 300px;
-@track-height: 10px;
+@track-width: 100%;
+@track-height: 5px;
+
+@range-roundness: 5px;
 
 
 input[type=range] {
@@ -25,7 +27,7 @@ input[type=range] {
         height: @track-height;
         background: @color1;
         border: none;
-        border-radius: 3px;
+        border-radius: @range-roundness;
     }
     
     &::-webkit-slider-thumb {
@@ -35,10 +37,6 @@ input[type=range] {
         width: @thumb-width;
         border-radius: @thumb-roundness;
         background: @color2;
-        // margin-top: -@track-height;
-        // margin-top: -@thumb-height / 2;
-        // margin-top: -(@track-height + @thumb-height) / 2;
-        // position:absolute;
         margin-top: (-@thumb-height / 2) + (@track-height / 4);
 
     }
@@ -51,7 +49,7 @@ input[type=range] {
         height: @track-height;
         background: @color1;
         border: none;
-        border-radius: 3px;
+        border-radius: @range-roundness;
     }
     &::-moz-range-thumb {
         border: none;
@@ -59,12 +57,6 @@ input[type=range] {
         width: @thumb-width;
         border-radius: @thumb-roundness;
         background: @color2;
-    }
-
-    /*hide the outline behind the border*/
-    &:-moz-focusring{
-        // outline: 1px solid white;
-        outline-offset: -1px;
     }
 
     &::-ms-track {
@@ -84,11 +76,11 @@ input[type=range] {
 
     &::-ms-fill-lower {
         background: darken(@color1, 10%);
-        border-radius: 10px;
+        border-radius: @range-roundness*2;
     }
     &::-ms-fill-upper {
         background: @color1;
-        border-radius: 10px;
+        border-radius: @range-roundness*2;
     }
     &::-ms-thumb {
         border: none;
