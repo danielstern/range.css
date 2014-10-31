@@ -6,10 +6,26 @@
 @thumb-width: 30px;
 
 @track-width: 100%;
-@track-height: 5px;
+@track-height: 10px;
 
 @range-roundness: 5px;
+@contrast: 10%;
 
+.track() {
+	width: @track-width;
+	height: @track-height;
+	box-shadow: black 1px 1px 1px;
+}
+
+.thumb() {
+	// border: none;
+	border: 1px solid pink;
+	box-shadow: black 1px 1px 1px;
+	height: @thumb-height;
+	width: @thumb-width;
+	border-radius: @thumb-roundness;
+	background: @color2;
+}
 
 input[type=range] {
     /*removes default webkit styles*/
@@ -23,45 +39,35 @@ input[type=range] {
     }
 
     &::-webkit-slider-runnable-track {
-        width: @track-width;
-        height: @track-height;
+    	.track();
         background: @color1;
         border: none;
         border-radius: @range-roundness;
     }
     
     &::-webkit-slider-thumb {
+       	.thumb();
         -webkit-appearance: none;
-        border: none;
-        height: @thumb-height;
-        width: @thumb-width;
-        border-radius: @thumb-roundness;
-        background: @color2;
         margin-top: (-@thumb-height / 2) + (@track-height / 4);
 
     }
+
     &:focus::-webkit-slider-runnable-track {
-        background: lighten(@color1, 10%);
+        background: lighten(@color1, @contrast);
     }
 
     &::-moz-range-track {
-        width: @track-width;
-        height: @track-height;
+        .track();
         background: @color1;
         border: none;
         border-radius: @range-roundness;
     }
     &::-moz-range-thumb {
-        border: none;
-        height: @thumb-height;
-        width: @thumb-width;
-        border-radius: @thumb-roundness;
-        background: @color2;
+       .thumb();
     }
 
     &::-ms-track {
-        width: @track-width;
-        height: @track-height;
+        .track(); 
         
         /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
         background: transparent;
@@ -75,7 +81,7 @@ input[type=range] {
     }
 
     &::-ms-fill-lower {
-        background: darken(@color1, 10%);
+        background: darken(@color1, @contrast);
         border-radius: @range-roundness*2;
     }
     &::-ms-fill-upper {
@@ -83,17 +89,13 @@ input[type=range] {
         border-radius: @range-roundness*2;
     }
     &::-ms-thumb {
-        border: none;
-        height: @thumb-height;
-        width: @thumb-width;
-        border-radius: @thumb-roundness;
-        background: @color2;
+        .thumb();
     }
     &:focus::-ms-fill-lower {
         background: @color1;
     }
     &:focus::-ms-fill-upper {
-        background: lighten(@color1, 10%);
+        background: lighten(@color1, @contrast);
     }
 }
 
