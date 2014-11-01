@@ -19,21 +19,21 @@ angular.module("DemoApp", ['ui.router']).config(function ($stateProvider, $urlRo
 }).value("presets", {
     "default": {
         'thumb-color': {
-            r: 255,
-            g: 0,
-            b: 0,
+            r: 32,
+            g: 67,
+            b: 95,
             a: 1
         },
         'track-color': {
-            r: 0,
-            g: 255,
-            b: 0,
+            r: 77,
+            g: 77,
+            b: 77,
             a: 1
         },
         'thumb-border-color': {
             r: 0,
             g: 0,
-            b: 255,
+            b: 0,
             a: 1
         },
         'thumb-roundness': 50,
@@ -41,9 +41,9 @@ angular.module("DemoApp", ['ui.router']).config(function ($stateProvider, $urlRo
         'thumb-shadow-size': 1,
         'thumb-width': 16,
         'thumb-shadow-color': {
-            r: 255,
+            r: 0,
             g: 0,
-            b: 255,
+            b: 0,
             a: 1
         },
         'thumb-shadow-blur': 1,
@@ -54,8 +54,8 @@ angular.module("DemoApp", ['ui.router']).config(function ($stateProvider, $urlRo
         'track-height': 5,
         'track-radius': 5,
         'track-border-color': {
-            r: 255,
-            g: 255,
+            r: 1,
+            g: 1,
             b: 0,
             a: 1
         },
