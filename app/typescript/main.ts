@@ -40,15 +40,15 @@ angular.module("DemoApp",['ui.router'])
 			a:1
 		},
 		'track-color': {
-			r:255,
-			g:0,
+			r:0,
+			g:255,
 			b:0,
 			a:1
 		},
 		'thumb-border-color': {
-			r:255,
+			r:0,
 			g:0,
-			b:0,
+			b:255,
 			a:1
 		},
 		'thumb-roundness': 50,
@@ -58,7 +58,7 @@ angular.module("DemoApp",['ui.router'])
 		'thumb-shadow-color': {
 			r:255,
 			g:0,
-			b:0,
+			b:255,
 			a:1
 		},
 		'thumb-shadow-blur': 1,
@@ -71,12 +71,12 @@ angular.module("DemoApp",['ui.router'])
 		'track-radius': 5,
 		'track-border-color': {
 			r:255,
-			g:0,
+			g:255,
 			b:0,
 			a:1
 		},
 		'track-shadow-color': {
-			r:255,
+			r:0,
 			g:0,
 			b:0,
 			a:1

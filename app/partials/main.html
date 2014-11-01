@@ -9,33 +9,32 @@
 		<!-- <input name=thumb-color ng-model=slider['thumb-color'] type=color> -->
 		<div color-picker color=slider['thumb-color']>col'r picker</div>
 	</label>
-	<label for=thumb-border-color>
-		Thumb Border Color
-		<div color-picker color=slider['thumb-border-color']>col'r picker</div>
-		<!-- <input name=thumb-border-color ng-model=slider['thumb-border-color'] type=color> -->
+	<label for=thumb-height>
+		Thumb Height
+		<input name=thumb-roundness ng-model=slider['thumb-height']  type=range min=0 max=50 step=1>
+	</label>
+	<label for=thumb-height>
+		Thumb Width
+		<input name=thumb-roundness ng-model=slider['thumb-width']  type=range min=0 max=50 step=1>
 	</label>
 	<label for=thumb-roundness>
 		Thumb Roundness
 		<input name=thumb-roundness ng-model=slider['thumb-roundness']  type=range min=0 max=50 step=1>
 	</label>
-	<label for=thumb-height>
-		Thumb Height
-		<input name=thumb-roundness ng-model=slider['thumb-height']  type=range min=0 max=50 step=1>
-	</label>
-
-	<label for=thumb-height>
-		Thumb Width
-		<input name=thumb-roundness ng-model=slider['thumb-width']  type=range min=0 max=50 step=1>
+	<h4>Thumb Border</h4>
+	<label for=thumb-border-color>
+		Thumb Border Color
+		<div color-picker color=slider['thumb-border-color']>col'r picker</div>
+		<!-- <input name=thumb-border-color ng-model=slider['thumb-border-color'] type=color> -->
 	</label>
 	<label for=thumb-border-width>
 		Thumb Border Width
 		<input name=thumb-border-width ng-model=slider['thumb-border-width']  type=range min=0 max=10 step=0.1>
 	</label>
-
 	<h4>Thumb Shadow</h4>
 	<label for=thumb-shadow-color>
 		Thumb Shadow Color
-		<input ng-model=slider['thumb-shadow-color'] type=color>
+		<div color-picker color=slider['thumb-shadow-color']>col'r picker</div>
 	</label>
 
 	<label for=thumb-shadow-color>
