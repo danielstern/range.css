@@ -15,6 +15,12 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
+    <style type="text/css">
+    /*label {
+      width: 100%;
+    }*/
+    </style>
+    <link rel="stylesheet/less" href="less/range.less" />
   </head>
   <body ng-app='DemoApp'>
 
@@ -57,11 +63,13 @@
       <div class="jumbotron">
         <h1>range.css<span class="glyphicon glyphicon-pushpin"></span> </h1>
         <p class="lead">Stylish range inputs for all!</p>
+<input type=range min=0 max=100>
+
         <p><a class="btn btn-primary btn-lg" href="#">Turn it up, man!<span class="glyphicon glyphicon-ok"></span></a></p>
       </div>
 
       <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-12">
 
           <div ui-view='main'></div>
 
@@ -83,6 +91,7 @@
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/less/dist/less-1.7.5.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
