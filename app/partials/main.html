@@ -1,76 +1,57 @@
 <!-- <form class="form form-horizontal"> -->
-<div class=form-group>
+<div class=col-lg-6>
 	<label for=color1>
 		Range Color
 		<input name=color1 ng-model=slider.color1 type=color>
 	</label>
-</div>
-<div class=form-group>
+<h3>Thumb</h3>
 	<label for=color1>
 		Button Color
 		<input name=color1 ng-model=slider.color2 type=color>
 	</label>
-</div>
-<div class=form-group>
-	<label for=shadow-color>
-		Shadow Color
-		<input ng-model=slider['shadow-color'] type=color>
+	<label for=thumb-border-color>
+		Border Color
+		<input name=thumb-border-color ng-model=slider['thumb-border-color'] type=color>
 	</label>
-</div>
-
-<div class=form-group>
 	<label for=thumb-roundness>
-		Button Hardness
-		<input name=thumb-roundness ng-model=slider['thumb-roundness']  type=range min=0 max=100 step=1>
+		Button Roundness
+		<input name=thumb-roundness ng-model=slider['thumb-roundness']  type=range min=0 max=50 step=1>
 	</label>
-</div>
-<div class=form-group>
-	<label for=thumb-border-width>
-		Button Border Width
-		<input name=thumb-border-width ng-model=slider['thumb-border-width']  type=range min=0 max=10 step=0.1>
-	</label>
-</div>
-
-
-<div class=form-group>
-	<label for=thumb-roundness>
-		Range Hardness
-		<input name=thumb-roundness ng-model=slider['track-radius']  type=range min=0 max=10 step=0.1>
-	</label>
-</div>
-
-
-
-<div class=form-group>
-	<label for=contrast>
-		Contrast
-		<input name=thumb-roundness ng-model=slider['contrast']  type=range min=0 max=50 step=1>
-	</label>
-</div>
-
-
-<div class=form-group>
-
 	<label for=thumb-height>
 		Button Height
 		<input name=thumb-roundness ng-model=slider['thumb-height']  type=range min=0 max=50 step=1>
-		<!-- <input ng-model=slider['thumb-height']  step=1> -->
 	</label>
-<div class=form-group>	
-
-<div class=form-group>
 
 	<label for=thumb-height>
 		Button Width
 		<input name=thumb-roundness ng-model=slider['thumb-width']  type=range min=0 max=50 step=1>
-		<!-- <input ng-model=slider['thumb-width']  step=1> -->
 	</label>
-<div class=form-group>	
-<!-- </form> -->
+	</div>
+	<label for=thumb-border-width>
+		Button Border Width
+		<input name=thumb-border-width ng-model=slider['thumb-border-width']  type=range min=0 max=10 step=0.1>
+	</label>
 
-<!-- <input ng-model=slider['thumb-roundness'] type=range min=0 max=1 step=0.01> -->
-<!-- <input ng-model=slider['thumbRoundness'] type=range min=0 max=100 step=1> -->
-<!-- 	
-<section class=col-sm-6>
-<h2>Slider 1</h2>
-</section>
+	<h3>Range</h3>
+
+	<label for=thumb-roundness>
+		Range Hardness
+		<input name=thumb-roundness ng-model=slider['track-radius']  type=range min=0 max=10 step=0.1>
+	</label>
+
+	<label for=thumb-roundness>
+		Range Height
+		<input name=thumb-roundness ng-model=slider['track-height']  type=range min=0 max=50 step=0.1>
+	</label>
+
+	<h3>General</h3>
+
+	<label for=shadow-color>
+		Shadow Color
+		<input ng-model=slider['shadow-color'] type=color>
+	</label>
+	<label for=contrast>
+		Contrast
+		<input name=thumb-roundness ng-model=slider['contrast']  type=range min=0 max=50 step=1>
+	</label>
+

@@ -1,5 +1,5 @@
-@color1: #909731;
-@color2: #342f7f;
+@color1: #424242;
+@color2: #555bc8;
 @shadow-color: #111;
 
 @thumb-roundness: 50%;
@@ -41,16 +41,10 @@
 input[type=range] {
     /*removes default webkit styles*/
     -webkit-appearance: none;
-
-
     
-    /*required for proper track sizing in FF*/
-
     // height: @thumb-height;
     margin: @thumb-height/2 0;
 
-    // padding: 100px;
-    // margin: 100px;
     width: @track-width;
 
     &:focus {
@@ -67,7 +61,10 @@ input[type=range] {
     &::-webkit-slider-thumb {
        	.thumb();
         -webkit-appearance: none;
-        margin-top: (-@thumb-height / 2) + (@track-height / 4);
+        // margin-top: (-@thumb-height / 2) + (@track-height / 4);
+        // margin-top: @track-height / 4 + 1;
+        // margin-top: (-@thumb-height / 4) + @track-height / 2;
+        margin-top: (@track-height / 2) - (@thumb-height / 2);
     }
 
     &:focus::-webkit-slider-runnable-track {
