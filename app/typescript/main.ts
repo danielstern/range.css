@@ -31,8 +31,47 @@ angular.module("DemoApp",['ui.router'])
 			}
 			})
 })
-.run(function($rootScope){
+.value("presets",{
+	"default":{
+		color1: '#616161',
+		color2: '#8396d7',
+		'thumb-border-color': '#3e58b6',
+		'shadow-color': '#111',
+		'thumb-roundness': 50,
+		'thumb-height': 40,
+		'thumb-shadow-size': 1,
+		'thumb-shadow-blur': 1,
+		'track-shadow-size': 1,
+		'track-shadow-blur': 1,
+		'thumb-width': 40,
+		'contrast':5,
+		'track-height': 10,
+		'track-radius': 5,
+		'namespace':'slider',
+		'thumb-border-width': 1,
+	},
+	"terminator":{
+		color1: '#616161',
+		color2: '#8396d7',
+		'thumb-border-color': '#3e58b6',
+		'shadow-color': '#111',
+		'thumb-roundness': 0,
+		'thumb-height': 40,
+		'thumb-shadow-size': 1,
+		'thumb-shadow-blur': 1,
+		'track-shadow-size': 1,
+		'track-shadow-blur': 1,
+		'thumb-width': 40,
+		'contrast':5,
+		'track-height': 10,
+		'track-radius': 5,
+		'namespace':'slider',
+		'thumb-border-width': 1,
+	}
+})
+.run(function($rootScope,presets){
 
+	$rootScope.presets = presets;
 
 	$rootScope.$watch('slider',function(slider,old){
 		// slider['thumb-roundness'] += "%";
@@ -53,27 +92,15 @@ angular.module("DemoApp",['ui.router'])
 		lessVals['track-height'] += "px";
 		less.modifyVars(lessVals);
 
-		$rootScope.output = __lastCSS;
-		$rootScope.outputMin = __lastCSSMin;
+		if (slider.namespace) {
+			$rootScope.output = __lastCSS.replace(/input\[type=range\]/g,'input[type=range].'+slider.namespace);
+		} else {
+			$rootScope.output = __lastCSS;
+		}
+
 	},true);
 
-	$rootScope.slider = {
-		color1: '#616161',
-		color2: '#8396d7',
-		'thumb-border-color': '#3e58b6',
-		'shadow-color': '#111',
-		'thumb-roundness': 50,
-		'thumb-height': 40,
-		'thumb-shadow-size': 1,
-		'thumb-shadow-blur': 1,
-		'track-shadow-size': 1,
-		'track-shadow-blur': 1,
-		'thumb-width': 40,
-		'contrast':5,
-		'track-height': 10,
-		'track-radius': 5,
-		'thumb-border-width': 1,
-	};
+	$rootScope.slider = presets.default;
 	// $rootScope.slider.y= 2;
 
 
