@@ -6,11 +6,13 @@
 <h3>Thumb</h3>
 	<label for=thumb-color>
 		Thumb Color
-		<input name=thumb-color ng-model=slider['thumb-color'] type=color>
+		<!-- <input name=thumb-color ng-model=slider['thumb-color'] type=color> -->
+		<div color-picker color=slider['thumb-color']>col'r picker</div>
 	</label>
 	<label for=thumb-border-color>
 		Thumb Border Color
-		<input name=thumb-border-color ng-model=slider['thumb-border-color'] type=color>
+		<div color-picker color=slider['thumb-border-color']>col'r picker</div>
+		<!-- <input name=thumb-border-color ng-model=slider['thumb-border-color'] type=color> -->
 	</label>
 	<label for=thumb-roundness>
 		Thumb Roundness

@@ -18,51 +18,83 @@ angular.module("DemoApp", ['ui.router']).config(function ($stateProvider, $urlRo
     });
 }).value("presets", {
     "default": {
-        'track-color': '#616161',
-        'thumb-color': '#8396d7',
-        'thumb-border-color': '#3e58b6',
+        'thumb-color': {
+            r: 255,
+            g: 0,
+            b: 0,
+            a: 1
+        },
+        'track-color': {
+            r: 255,
+            g: 0,
+            b: 0,
+            a: 1
+        },
+        'thumb-border-color': {
+            r: 255,
+            g: 0,
+            b: 0,
+            a: 1
+        },
         'thumb-roundness': 50,
         'thumb-height': 16,
         'thumb-shadow-size': 1,
         'thumb-width': 16,
+        'thumb-shadow-color': {
+            r: 255,
+            g: 0,
+            b: 0,
+            a: 1
+        },
         'thumb-shadow-blur': 1,
-        'thumb-shadow-color': '#111',
         'thumb-border-width': 1,
         'track-shadow-size': 1,
         'track-shadow-blur': 1,
         'track-border-width': 1,
         'track-height': 5,
         'track-radius': 5,
-        'track-border-color': '#3e58b6',
-        'contrast': 5,
-        'namespace': 'slider'
-    },
-    "terminator": {
-        'thumb-color': '#9b3141',
-        'thumb-border-color': '#732631',
-        'thumb-roundness': 0,
-        'thumb-height': 25,
-        'thumb-width': 10,
-        'thumb-shadow-size': 0,
-        'thumb-shadow-blur': 0,
-        'thumb-shadow-color': '#111',
-        'thumb-border-width': 1,
-        'track-color': '#1a1a1a',
-        'track-shadow-size': 1,
-        'track-shadow-blur': 1.5,
-        'track-border-width': 1,
-        'track-height': 25,
-        'track-radius': 0,
-        'track-border-color': '#000',
+        'track-border-color': {
+            r: 255,
+            g: 0,
+            b: 0,
+            a: 1
+        },
+        'track-shadow-color': {
+            r: 255,
+            g: 0,
+            b: 0,
+            a: 1
+        },
         'contrast': 5,
         'namespace': 'slider'
     }
+}).directive("colorPicker", function () {
+    return {
+        restrict: "AE",
+        templateUrl: 'partials/color-picker.html',
+        scope: {
+            color: "="
+        }
+    };
 }).run(function ($rootScope, presets) {
     $rootScope.presets = presets;
 
     $rootScope.$watch('slider', function (slider, old) {
-        console.log("Slider...", slider);
         var lessVals = angular.copy(slider);
+
+        function toRGBA(rgbObject) {
+            return "rgba(" + rgbObject.r + "," + rgbObject.g + "," + rgbObject.b + "," + rgbObject.a + ")";
+        }
+
+        lessVals['thumb-color'] = toRGBA(lessVals['thumb-color']);
+        lessVals['thumb-border-color'] = toRGBA(lessVals['thumb-border-color']);
+        lessVals['thumb-shadow-color'] = toRGBA(lessVals['thumb-shadow-color']);
+
+        lessVals['track-color'] = toRGBA(lessVals['track-color']);
+        lessVals['track-border-color'] = toRGBA(lessVals['track-border-color']);
+        lessVals['track-shadow-color'] = toRGBA(lessVals['track-shadow-color']);
+
+        console.log("Slider...", slider, lessVals);
 
         lessVals['track-radius'] += "px";
         lessVals['track-shadow-size'] += "px";
