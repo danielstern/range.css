@@ -4,9 +4,9 @@
 <section>
 <div class=col-sm-6>
 <h3>Thumb</h3>
-	<label for=color1>
+	<label for=thumb-color>
 		Thumb Color
-		<input name=color1 ng-model=slider.color2 type=color>
+		<input name=thumb-color ng-model=slider['thumb-color'] type=color>
 	</label>
 	<label for=thumb-border-color>
 		Thumb Border Color
@@ -61,7 +61,7 @@
 
 	<label for=color1>
 		Track Color
-		<input name=color1 ng-model=slider.color1 type=color>
+		<input name=color1 ng-model=slider['track-color'] type=color>
 	</label>
 
 	<label for=thumb-roundness>

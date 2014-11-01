@@ -33,41 +33,49 @@ angular.module("DemoApp",['ui.router'])
 })
 .value("presets",{
 	"default":{
-		color1: '#616161',
-		color2: '#8396d7',
-		// 'shadow-color': '#111',
+		'track-color': '#616161',
+		'thumb-color': '#8396d7',
+
 		'thumb-border-color': '#3e58b6',
 		'thumb-roundness': 50,
-		'thumb-height': 40,
+		'thumb-height': 16,
 		'thumb-shadow-size': 1,
-		'thumb-width': 40,
+		'thumb-width': 16,
 		'thumb-shadow-blur': 1,
+		'thumb-shadow-color': '#111',
 		'thumb-border-width': 1,
+
 		'track-shadow-size': 1,
 		'track-shadow-blur': 1,
 		'track-border-width': 1,
-		'track-height': 10,
+		'track-height': 5,
 		'track-radius': 5,
+		'track-border-color': '#3e58b6',
+
 		'contrast':5,
 		'namespace':'slider',
 	},
 	"terminator":{
-		color1: '#616161',
-		color2: '#8396d7',
-		'thumb-border-color': '#3e58b6',
-		'shadow-color': '#111',
+		'thumb-color': '#9b3141',
+		'thumb-border-color': '#732631',
 		'thumb-roundness': 0,
-		'thumb-height': 40,
-		'thumb-shadow-size': 1,
-		'thumb-shadow-blur': 1,
-		'track-shadow-size': 1,
-		'track-shadow-blur': 1,
-		'thumb-width': 40,
-		'contrast':5,
-		'track-height': 10,
-		'track-radius': 5,
-		'namespace':'slider',
+		'thumb-height': 25,
+		'thumb-width': 10,
+		'thumb-shadow-size': 0,
+		'thumb-shadow-blur': 0,
+		'thumb-shadow-color': '#111',
 		'thumb-border-width': 1,
+
+		'track-color': '#1a1a1a',
+		'track-shadow-size': 1,
+		'track-shadow-blur': 1.5,
+		'track-border-width': 1,
+		'track-height': 25,
+		'track-radius': 0,
+		'track-border-color': '#000',
+
+		'contrast':5,
+		'namespace':'slider',
 	}
 })
 .run(function($rootScope,presets){
@@ -77,6 +85,7 @@ angular.module("DemoApp",['ui.router'])
 	$rootScope.$watch('slider',function(slider,old){
 		// slider['thumb-roundness'] += "%";
 		// if (slider === old) return;
+		console.log("Slider...",slider);
 		var lessVals = angular.copy(slider);
 
 		lessVals['track-radius'] += "px";

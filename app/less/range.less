@@ -1,5 +1,5 @@
-@color1: #424242;
-@color2: #555bc8;
+@track-color: #424242;
+@thumb-color: #555bc8;
 
 @thumb-roundness: 50%;
 @thumb-height: 30px;
@@ -39,7 +39,7 @@
 	height: @thumb-height;
 	width: @thumb-width;
 	border-radius: @thumb-roundness;
-	background: @color2;
+	background: @thumb-color;
 	cursor: pointer;
 }
 
@@ -60,7 +60,7 @@ input[type=range] {
     &::-webkit-slider-runnable-track {
         .track();
         .shadow(@track-shadow-size,@track-shadow-blur,@track-shadow-color);
-        background: @color1;
+        background: @track-color;
         border-radius: @track-radius;
         border: @track-border-width solid @track-border-color;
     }
@@ -68,17 +68,17 @@ input[type=range] {
     &::-webkit-slider-thumb {
         .thumb();
         -webkit-appearance: none;
-        margin-top: ((-@track-border-width + @track-height) / 2) - (@thumb-height / 2);
+        margin-top: ((-@track-border-width * 2 + @track-height) / 2) - (@thumb-height / 2);
     }
 
     &:focus::-webkit-slider-runnable-track {
-        background: lighten(@color1, @contrast);
+        background: lighten(@track-color, @contrast);
     }
 
     &::-moz-range-track {
         .track();
         .shadow(@track-shadow-size,@track-shadow-blur,@track-shadow-color);
-        background: @color1;
+        background: @track-color;
         border-radius: @track-radius;
          border: @track-border-width solid @track-border-color;
     }
@@ -101,13 +101,13 @@ input[type=range] {
     }
 
     &::-ms-fill-lower {
-        background: darken(@color1, @contrast);
+        background: darken(@track-color, @contrast);
         border: @track-border-width solid @track-border-color;
         border-radius: @track-radius*2;
         .shadow(@track-shadow-size,@track-shadow-blur,@track-shadow-color);
     }
     &::-ms-fill-upper {
-        background: @color1;
+        background: @track-color;
         border: @track-border-width solid @track-border-color;
         border-radius: @track-radius*2;
         .shadow(@track-shadow-size,@track-shadow-blur,@track-shadow-color);
@@ -116,9 +116,9 @@ input[type=range] {
         .thumb();
     }
     &:focus::-ms-fill-lower {
-        background: @color1;
+        background: @track-color;
     }
     &:focus::-ms-fill-upper {
-        background: lighten(@color1, @contrast);
+        background: lighten(@track-color, @contrast);
     }
 }
