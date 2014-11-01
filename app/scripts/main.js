@@ -27,7 +27,10 @@ angular.module("DemoApp", ['ui.router']).config(function ($stateProvider, $urlRo
         'thumb-roundness': 50,
         'thumb-height': 30,
         'thumb-width': 30,
-        'track-height': 10
+        'contrast': 5,
+        'track-height': 10,
+        'track-radius': 4,
+        'thumb-border-width': 1
     };
 
     $rootScope.$watch('slider', function (slider, old) {
@@ -35,9 +38,13 @@ angular.module("DemoApp", ['ui.router']).config(function ($stateProvider, $urlRo
             return;
         var lessVals = angular.copy(slider);
         lessVals['thumb-roundness'] += "%";
+        lessVals['range-roundness'] += "px";
         lessVals['thumb-height'] += "px";
         lessVals['thumb-width'] += "px";
+        lessVals['thumb-border-width'] += "px";
+        lessVals['contrast'] += "%";
 
+        lessVals['track-radius'] += "px";
         lessVals['track-height'] += "px";
         less.modifyVars(lessVals);
     }, true);

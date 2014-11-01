@@ -9,7 +9,7 @@
 @track-width: 100%;
 @track-height: 10px;
 
-@range-roundness: 5px;
+@track-radius: 5px;
 @contrast: 5%;
 
 @shadow-size: 1px;
@@ -61,7 +61,7 @@ input[type=range] {
     	.track();
     	.shadow();
         background: @color1;
-        border-radius: @range-roundness;
+        border-radius: @track-radius;
     }
     
     &::-webkit-slider-thumb {
@@ -79,7 +79,7 @@ input[type=range] {
         .shadow();
         background: @color1;
         border: none;
-        border-radius: @range-roundness;
+        border-radius: @track-radius;
     }
     &::-moz-range-thumb {
        .thumb();
@@ -101,12 +101,12 @@ input[type=range] {
 
     &::-ms-fill-lower {
         background: darken(@color1, @contrast);
-        border-radius: @range-roundness*2;
+        border-radius: @track-radius*2;
         .shadow();
     }
     &::-ms-fill-upper {
         background: @color1;
-        border-radius: @range-roundness*2;
+        border-radius: @track-radius*2;
         .shadow();
     }
     &::-ms-thumb {
