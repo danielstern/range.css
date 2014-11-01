@@ -2,9 +2,24 @@
 <html class="no-js">
   <head>
     <meta charset="utf-8">
-    <title>range.css - css styled range inputs</title>
+    <title>range.css - generate styles for your HTML5 range inputs</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
+
+    <link rel="canonical" href="http://danielstern.ca/range.css/" />
+    <meta property="og:locale" content="en_CA" />
+    <!-- <meta property="og:type" content="article" /> -->
+    <meta property="og:title" content="range.css - generate styles for your HTML5 range inputs" />
+    <meta property="og:description" content="range.css will automatically generate CSS styles for your range inputs that are cross-browser compatible. No code required!" />
+    <meta property="og:url" content="http://danielstern.ca/range.css/" />
+    <meta property="og:site_name" content="range.css" />
+    <!-- <meta property="article:publisher" content="https://www.facebook.com/range.css" /> -->
+    <meta property="og:image" content="http://danielstern.ca/img.png" />
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="@danieljackstern"/>
+    <meta name="twitter:domain" content="danieljackstern"/>
+    <meta name="twitter:creator" content="@danieljackstern"/>
+
     <link rel="shortcut icon" href="/favicon.ico">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
@@ -35,25 +50,25 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" ui-sref='home'>range.css</a>
+      <a class="navbar-brand" ui-sref='home'>range.css - generate styles for your HTML5 Inputs</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li ui-sref='docs' ui-sref-active="active"><a href=''>About</a></li>
-        <li ui-sref='home' ui-sref-active="active"><a href=''>Github</a></li>
+        <!-- <li ui-sref='docs' ui-sref-active="active"><a href=''>About</a></li>
+        <li ui-sref='home' ui-sref-active="active"><a href=''>Github</a></li> -->
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-phone-alt"></span> Links<span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Github</a></li>
+        <!-- <li class="dropdown"> -->
+          <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-phone-alt"></span> Links<span class="caret"></span></a> -->
+          <!-- <ul class="dropdown-menu" role="menu"> -->
+       <!--      <li><a href="#">Github</a></li>
             <li><a href="#">Typescript Docs</a></li>
-            <li><a href="#">Angular Docs</a></li>
-            <li class="divider"></li>
-            <li><a href="#"><span class="glyphicon glyphicon-headphones"></span> danielstern</a></li>
-          </ul>
+            <li><a href="#">Angular Docs</a></li> -->
+            <!-- <li class="divider"></li> -->
+            <!-- <li><a href="#"><span class="glyphicon glyphicon-headphones"></span> danielstern</a></li> -->
+          <!-- </ul> -->
         </li>
       </ul>
     </div><!-- /.navbar-collapse -->
@@ -61,7 +76,7 @@
 </nav>
 
       <div class="jumbotron">
-        <h1>range.css<span class="glyphicon glyphicon-star"></span> </h1>
+        <h1>range.css <span class="glyphicon glyphicon-star"></span> </h1>
         <!-- <div class=col-sm-6> -->
         <p class="lead">CSS Style Generator for Range Inputs</p>
 <input type=range min=0 max=100>
@@ -77,8 +92,8 @@
           <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
           <a href="https://twitter.com/share" class="twitter-share-button" data-text="CSS Styles for Range Inputs! At last!" data-size="large" data-related="danieljackstern" data-hashtags="css">Tweet</a>
           <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-          <iframe src="http://ghbtns.com/github-btn.html?user=danielstern&repo=range.css&type=watch"
-            allowtransparency="true" frameborder="0" scrolling="0" width="62" height="20"></iframe>
+         <iframe src="http://ghbtns.com/github-btn.html?user=danielstern&repo=range.css&type=watch&count=true&size=large"
+           allowtransparency="true" frameborder="0" scrolling="0" width="170" height="30"></iframe>
         </div>
         <div class=clearfix></div>  
       </div>
@@ -99,6 +114,17 @@
       </div>
     </div>
 
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-40501021-18', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+
 
 
     <!-- build:js(.) scripts/vendor.js -->
@@ -116,5 +142,7 @@
     <!-- build:js({app,.tmp}) scripts/main.js -->
     <script src="scripts/main.js"></script>
     <!-- endbuild -->
+    <a href="https://github.com/danielstern/range.css"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+
 </body>
 </html>

@@ -325,7 +325,11 @@ module.exports = function(grunt) {
                         '*.{ico,png,txt}',
                         '.htaccess',
                         'images/{,*/}*.webp',
+                        'less/{,*/}*.less',
                         '{,*/}*.html',
+                        'scripts/*.*',
+                        '*.*',
+                        // '{,*/}*.html',
                         'styles/fonts/{,*/}*.*'
                     ]
                 }, {
@@ -411,7 +415,7 @@ module.exports = function(grunt) {
         'typescript',
         'less',
         'concat',
-        // 'cssmin',
+        'cssmin',
         'uglify',
         'copy:dist',
         'rev',
