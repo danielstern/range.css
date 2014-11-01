@@ -1,57 +1,109 @@
 <!-- <form class="form form-horizontal"> -->
-<div class=col-lg-6>
-	<label for=color1>
-		Range Color
-		<input name=color1 ng-model=slider.color1 type=color>
-	</label>
+<div class='slider-form'>
+
+<section>
+<div class=col-sm-6>
 <h3>Thumb</h3>
 	<label for=color1>
-		Button Color
+		Thumb Color
 		<input name=color1 ng-model=slider.color2 type=color>
 	</label>
 	<label for=thumb-border-color>
-		Border Color
+		Thumb Border Color
 		<input name=thumb-border-color ng-model=slider['thumb-border-color'] type=color>
 	</label>
 	<label for=thumb-roundness>
-		Button Roundness
+		Thumb Roundness
 		<input name=thumb-roundness ng-model=slider['thumb-roundness']  type=range min=0 max=50 step=1>
 	</label>
 	<label for=thumb-height>
-		Button Height
+		Thumb Height
 		<input name=thumb-roundness ng-model=slider['thumb-height']  type=range min=0 max=50 step=1>
 	</label>
 
 	<label for=thumb-height>
-		Button Width
+		Thumb Width
 		<input name=thumb-roundness ng-model=slider['thumb-width']  type=range min=0 max=50 step=1>
 	</label>
-	</div>
 	<label for=thumb-border-width>
-		Button Border Width
+		Thumb Border Width
 		<input name=thumb-border-width ng-model=slider['thumb-border-width']  type=range min=0 max=10 step=0.1>
 	</label>
 
-	<h3>Range</h3>
+	<h4>Thumb Shadow</h4>
+	<label for=thumb-shadow-color>
+		Thumb Shadow Color
+		<input ng-model=slider['thumb-shadow-color'] type=color>
+	</label>
 
-	<label for=thumb-roundness>
-		Range Hardness
-		<input name=thumb-roundness ng-model=slider['track-radius']  type=range min=0 max=10 step=0.1>
+	<label for=thumb-shadow-color>
+		Thumb Shadow Size
+		<input ng-model=slider['thumb-shadow-size'] type=range min=0 max=15 step=0.1>
+	</label>
+
+	<label for=thumb-shadow-color>
+		 Thumb Shadow Blur
+		<input ng-model=slider['thumb-shadow-blur'] type=range min=0 max=15 step=0.1>
+	</label>
+	</div>
+	 <div class=col-sm-6>
+	 <h2>
+	  CSS
+	 </h2>
+	<textarea width=500px height=500px ng-model=output></textarea>
+	</div>
+	<div class=clearfix></div>
+</section>
+
+<section>
+
+	<h3>Track</h3>
+
+	<label for=color1>
+		Track Color
+		<input name=color1 ng-model=slider.color1 type=color>
 	</label>
 
 	<label for=thumb-roundness>
-		Range Height
+		Track Edge Softness
+		<input name=thumb-roundness ng-model=slider['track-radius']  type=range min=0 max=25 step=0.1>
+	</label>
+
+	<label for=thumb-roundness>
+		Track Height
 		<input name=thumb-roundness ng-model=slider['track-height']  type=range min=0 max=50 step=0.1>
 	</label>
 
+	<h4>Track Shadow</h4>
+	<label for=thumb-shadow-color>
+		Track Shadow Color
+		<input ng-model=slider['track-shadow-color'] type=color>
+	</label>
+
+	<label for=Track-shadow-color>
+		Track Shadow Size
+		<input ng-model=slider['track-shadow-size'] type=range min=0 max=15 step=0.1>
+	</label>
+
+	<label for=Track-shadow-color>
+		 Track Shadow Blur
+		<input ng-model=slider['track-shadow-blur'] type=range min=0 max=15 step=0.1>
+	</label>
+
+</section>
+
+<section>
+	
+
+
 	<h3>General</h3>
 
-	<label for=shadow-color>
-		Shadow Color
-		<input ng-model=slider['shadow-color'] type=color>
-	</label>
+	
 	<label for=contrast>
-		Contrast
+		Contrast (applies to focused sliders)
 		<input name=thumb-roundness ng-model=slider['contrast']  type=range min=0 max=50 step=1>
 	</label>
+</div>
 
+
+</section>

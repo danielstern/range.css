@@ -27,8 +27,15 @@ angular.module("DemoApp", ['ui.router']).config(function ($stateProvider, $urlRo
         lessVals['contrast'] += "%";
 
         lessVals['track-radius'] += "px";
+        lessVals['track-shadow-size'] += "px";
+        lessVals['track-shadow-blur'] += "px";
+        lessVals['thumb-shadow-size'] += "px";
+        lessVals['thumb-shadow-blur'] += "px";
         lessVals['track-height'] += "px";
         less.modifyVars(lessVals);
+
+        $rootScope.output = __lastCSS;
+        $rootScope.outputMin = __lastCSSMin;
     }, true);
 
     $rootScope.slider = {
@@ -38,6 +45,10 @@ angular.module("DemoApp", ['ui.router']).config(function ($stateProvider, $urlRo
         'shadow-color': '#111',
         'thumb-roundness': 50,
         'thumb-height': 40,
+        'thumb-shadow-size': 1,
+        'thumb-shadow-blur': 1,
+        'track-shadow-size': 1,
+        'track-shadow-blur': 1,
         'thumb-width': 40,
         'contrast': 5,
         'track-height': 10,
