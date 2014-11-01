@@ -7,21 +7,19 @@
 @thumb-shadow-size: 1px;
 @thumb-shadow-blur: 1px;
 @thumb-shadow-color: #111;
+@thumb-border-width: 1px;
+@thumb-border-color: white;
 
 @track-width: 100%;
 @track-height: 10px;
 @track-shadow-size: 2px;
 @track-shadow-blur: 2px;
 @track-shadow-color: #222;
+@track-border-width: 1px;
+@track-border-color: black;
 
 @track-radius: 5px;
 @contrast: 5%;
-
-
-@thumb-border-width: 1px;
-@thumb-border-color: white;
-
-@namespace: '__slider';
 
 .shadow(@shadow-size,@shadow-blur,@shadow-color) {
 	box-shadow: @shadow-size @shadow-size @shadow-blur @shadow-color, 0px 0px @shadow-size lighten(@shadow-color,5%);
@@ -32,6 +30,7 @@
 	height: @track-height;
 	cursor: pointer;
     animate: 0.2s;
+    
 }
 
 .thumb() {
@@ -63,15 +62,13 @@ input[type=range] {
         .shadow(@track-shadow-size,@track-shadow-blur,@track-shadow-color);
         background: @color1;
         border-radius: @track-radius;
+        border: @track-border-width solid @track-border-color;
     }
     
     &::-webkit-slider-thumb {
         .thumb();
         -webkit-appearance: none;
-        // margin-top: (-@thumb-height / 2) + (@track-height / 4);
-        // margin-top: @track-height / 4 + 1;
-        // margin-top: (-@thumb-height / 4) + @track-height / 2;
-        margin-top: (@track-height / 2) - (@thumb-height / 2);
+        margin-top: ((-@track-border-width + @track-height) / 2) - (@thumb-height / 2);
     }
 
     &:focus::-webkit-slider-runnable-track {
@@ -82,8 +79,8 @@ input[type=range] {
         .track();
         .shadow(@track-shadow-size,@track-shadow-blur,@track-shadow-color);
         background: @color1;
-        border: none;
         border-radius: @track-radius;
+         border: @track-border-width solid @track-border-color;
     }
     &::-moz-range-thumb {
        .thumb();
@@ -105,11 +102,13 @@ input[type=range] {
 
     &::-ms-fill-lower {
         background: darken(@color1, @contrast);
+        border: @track-border-width solid @track-border-color;
         border-radius: @track-radius*2;
         .shadow(@track-shadow-size,@track-shadow-blur,@track-shadow-color);
     }
     &::-ms-fill-upper {
         background: @color1;
+        border: @track-border-width solid @track-border-color;
         border-radius: @track-radius*2;
         .shadow(@track-shadow-size,@track-shadow-blur,@track-shadow-color);
     }
