@@ -45,12 +45,8 @@
 
 
 input[type=range] {
-    /*removes default webkit styles*/
     -webkit-appearance: none;
-    
-    // height: @thumb-height;
     margin: @thumb-height/2 0;
-
     width: @track-width;
 
     &:focus {
@@ -88,15 +84,9 @@ input[type=range] {
 
     &::-ms-track {
         .track(); 
-        
-        /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
         background: transparent;
-        
-        /*leave room for the larger thumb to overflow with a transparent border */
         border-color: transparent;
         border-width: @thumb-width 0;
-
-        /*remove default tick marks*/
         color: transparent;
     }
 

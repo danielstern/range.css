@@ -1,9 +1,12 @@
+/// <reference path="colorPicker.ts"/>
+
 declare var angular:any;
 declare var less:any;
 declare var __lastCSS:any;
 declare var __lastCSSMin:any;
 
-angular.module("DemoApp",['ui.router'])
+
+angular.module("DemoApp",['ui.router','colorPicker'])
 .config(function($stateProvider,$urlRouterProvider) {
 	$urlRouterProvider.otherwise('/');
 
@@ -32,7 +35,7 @@ angular.module("DemoApp",['ui.router'])
 			})
 })
 .value("presets",{
-	"default":{
+	"Default":{
 		'thumb-color': {
 			r:32,
 			g:67,
@@ -84,77 +87,60 @@ angular.module("DemoApp",['ui.router'])
 		'contrast':5,
 		'namespace':'slider',
 	},
+	"Terminator":{
+    "thumb-color": {
+        "r": "255",
+        "g": 67,
+        "b": 95,
+        "a": "0.93"
+    },
+    "track-color": {
+        "r": "72",
+        "g": 77,
+        "b": 77,
+        "a": 1
+    },
+    "thumb-border-color": {
+        "r": 255,
+        "g": "30",
+        "b": 0,
+        "a": 1
+    },
+    "thumb-roundness": "0",
+    "thumb-height": "27",
+    "thumb-shadow-size": "0",
+    "thumb-width": "18",
+    "thumb-shadow-color": {
+        "r": "103",
+        "g": 0,
+        "b": 0,
+        "a": 1
+    },
+    "thumb-shadow-blur": 1,
+    "thumb-border-width": "0",
+    "track-shadow-size": 1,
+    "track-shadow-blur": 1,
+    "track-border-width": "0",
+    "track-height": "25.6",
+    "track-radius": "0",
+    "track-border-color": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+    },
+    "track-shadow-color": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 1
+    },
+    "contrast": 5,
+    "namespace": "slider"
+}
+
 })
-.directive("colorPicker",function(){
-	return {
-		restrict:"AE",
-		templateUrl:'partials/color-picker.html',
-		scope: {
-			color:"="
-		},
-		controller: function($scope) {
-			
-			function hexstr(number) {
-			    var chars = new Array("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f");
-			    var low = number & 0xf;
-			    var high = (number >> 4) & 0xf;
-			    return "" + chars[high] + chars[low];
-			}
 
-			function rgbToHex(r, g, b) {
-			    return hexstr(r) + hexstr(g) + hexstr(b);
-			}
-
-			function sixToThree(str) {
-				if (str[0] === str[1] && str[2] === str[3] && str[4] === str[5]) {
-					return str[0] + str[2] + str[4];
-				} else {
-					return str;
-				}
-			}
-
-			function hexToRgb(hex) {
-			    // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
-			    var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
-			    hex = hex.replace(shorthandRegex, function(m, r, g, b) {
-			        return r + r + g + g + b + b;
-			    });
-
-			    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-			    return result ? {
-			        r: parseInt(result[1], 16),
-			        g: parseInt(result[2], 16),
-			        b: parseInt(result[3], 16),
-			        a:$scope.alpha
-			    } : null;
-			}
-
-
-			$scope.$watch('color',function(color){
-				if (color) {
-					$scope.alpha = color.a;
-					$scope.hex = rgbToHex($scope.color.r,$scope.color.g,$scope.color.b);
-					$scope.hex = "#" + sixToThree($scope.hex);
-				}
-				// if (color.fromInput) {
-					// return;
-				// }
-			},true);
-
-			$scope.$watch('hex',function(hex){
-				if (!hex) {
-					return;
-				}
-				try {
-					var color = hexToRgb(hex);
-					$scope.color = color;
-				} catch (e) {
-					console.warn("Invalid color");
-				}
-			})
-		}
-	}
-	})
 .run(function($rootScope,presets){
 
 	$rootScope.presets = presets;
@@ -184,7 +170,7 @@ angular.module("DemoApp",['ui.router'])
 		// lessVals['thumb-color'] = "rgba("+lessVals['thumb-color'].r+","+lessVals['thumb-color'].g+","+lessVals['thumb-color'].b+","+lessVals['thumb-color'].a+")";
 		// lessVals['thumb-color'] = "rgba("+lessVals['thumb-color'].r+","+lessVals['thumb-color'].g+","+lessVals['thumb-color'].b+","+lessVals['thumb-color'].a+")";
 		// lessVals['thumb-color'] = "rgba("+lessVals['thumb-color'].r+","+lessVals['thumb-color'].g+","+lessVals['thumb-color'].b+","+lessVals['thumb-color'].a+")";
-		console.log("Slider...",slider,lessVals);
+		// console.log("Slider...",slider,lessVals);
 
 		lessVals['track-radius'] += "px";
 		lessVals['track-shadow-size'] += "px";
@@ -208,9 +194,11 @@ angular.module("DemoApp",['ui.router'])
 			$rootScope.output = __lastCSS;
 		}
 
+		console.log("Generated Values?",angular.toJson(slider));
+
 	},true);
 
-	$rootScope.slider = presets.default;
+	$rootScope.slider = presets['Terminator'];
 	// $rootScope.slider.y= 2;
 
 

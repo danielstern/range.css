@@ -1,3 +1,4 @@
+/// <reference path="colorPicker.d.ts" />
 declare var angular: any;
 declare var less: any;
 declare var __lastCSS: any;
