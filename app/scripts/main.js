@@ -512,9 +512,7 @@ angular.module("DemoApp", ['ui.router', 'colorPicker']).config(function ($stateP
         less.modifyVars(lessVals);
 
         if (slider.namespace) {
-            $rootScope.output = __lastCSS.replace(/input\[type=range\]/g, 'input[type=range].' + slider.namespace);
         } else {
-            $rootScope.output = __lastCSS;
         }
 
         console.log("Generated Values?", angular.toJson(slider));

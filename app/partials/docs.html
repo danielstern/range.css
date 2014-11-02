@@ -1,1 +1,60 @@
-<h2>One day, this page will have docs.</h2>
+<div class='col-md-10 col-md-offset-1'>
+<h2>Styling Cross-Browser Compatible Range Inputs with CSS</h2>
+<h3>
+	Introduction
+</h3>
+<p>
+	Styling for range inputs has improved dramatically since the release of IE10. It is now possible to generate cross-browser compatible range inputs (sliders) using only CSS. In this tutorial, we will take a basic range input:
+</p>
+<div>
+<div class='col-md-8 col-md-offset-2'>
+	<input type="range">
+	</div>
+</div>
+<div class=clearfix></div>
+<p>
+
+	And turn it into this...
+</p>
+<div>
+<div class='col-md-8 col-md-offset-2'>
+	<input type="range" class=awesome>
+	</div>
+</div>
+<div class=clearfix></div>
+<p>
+	In order to simplify the process of generating cross-compatible styles, LESS style sheets have been included. CSS is also available.
+</p>
+<h3>
+	Applying base CSS styles
+</h3>
+<p>
+	Several styles need to be applied to range inputs in all browsers to override their basic appearance.
+	<code>
+		<pre>
+input[type=range] {
+  -webkit-appearance: none; /*Hides the slider so that custom slider can be made*/
+  width: 100%; /*Specific range is required for Firefox.*/
+}
+
+input[type=range]:focus {
+  outline: none; /*Removes the blue border. You may want to take this out for accessibility reasons.*/
+}
+
+input[type=range]::-ms-track {
+  width: 100%;
+  cursor: pointer;
+  background: transparent; /*Hides the slider so custom styles can be added*/
+  border-color: transparent;
+  color: transparent;
+}</pre></code>
+
+This gives us invisible range inputs in all browsers. Not very useful, but soon.
+</p>
+<h3>
+	Styling the Thumb
+</h3>
+<p>
+	The widget that you click or drag along the track is called the thumb.
+</p>
+</div>
