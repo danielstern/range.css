@@ -8,7 +8,7 @@
 </p>
 <div>
 <div class='col-md-8 col-md-offset-2'>
-	<input type="range">
+	<input type="range" alt="Regular range input with no styling.">
 	</div>
 </div>
 <div class=clearfix></div>
@@ -18,7 +18,7 @@
 </p>
 <div>
 <div class='col-md-8 col-md-offset-2'>
-	<input type="range" class=awesome>
+	<input type="range" class=awesome alt="Styled range input">
 	</div>
 </div>
 <div class=clearfix></div>
@@ -35,6 +35,10 @@
 input[type=range] {
   -webkit-appearance: none; /*Hides the slider so that custom slider can be made*/
   width: 100%; /*Specific range is required for Firefox.*/
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
 }
 
 input[type=range]:focus {
@@ -55,6 +59,352 @@ This gives us invisible range inputs in all browsers. Not very useful, but soon.
 	Styling the Thumb
 </h3>
 <p>
-	The widget that you click or drag along the track is called the thumb.
+	The widget that you click or drag along the track is called the thumb. It can be styled just like a HTML element.
+<code>
+	<pre>
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+
+  border: 1px solid #000000;
+  height: 36px;
+  width: 16px;
+  border-radius: 3px;
+  background: #ffffff;
+  cursor: pointer;
+  margin-top: -14px; /* you need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; /*Add cool effects to your sliders!*/
+}
+
+/* all the same stuff for Firefox */
+input[type=range]::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 36px;
+  width: 16px;
+  border-radius: 3px;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+/* and for IE (same as Firefox in this case) */
+input[type=range]::-ms-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 36px;
+  width: 16px;
+  border-radius: 3px;
+  background: #ffffff;
+  cursor: pointer;
+}
+</pre></code>
+This gives us the following, a styled input on an invisible track:
+</p>
+<div class='thumb-only col-md-8 col-md-offset-2' alt="Styled range input showing just the styled thumb with no track.">
+	<input type="range">
+</div>
+<div class="clearfix"></div>
+<h3>
+	Styling the Track
+</h3>
+<p>
+	The line that the thumb moves across is called the track. It is also styled just like a regular HTML element.
+</p>
+<p>
+	A note on the IE: Internet Explorer 10+ has a slightly different approach to range inputs. In IE, you are allowed to specify completely different styles for the upper (right of the thumb) and lower (left of the thumb) areas of the track. 
+</p>
+<p>
+	Another thing to note is that you can apply focus effects to the track which change the styling when the user is interacting with the range.
+</p>
+<pre><code>input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: #3071a9;
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #367ebd;
+}
+
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: #3071a9;
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  border-width: 16px 0;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #2a6495;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #3071a9;
+}
+input[type=range]::-ms-fill-upper {
+  background: #3071a9;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #367ebd;
+}
+</code></pre>
+<p>
+	The code above gives us a track with no thumb.
+</p>
+</p>
+<div class='thumb-only col-md-8 col-md-offset-2' alt="Styled range input showing just the track and no thumb.">
+	<input type="range">
+</div>
+<div class="clearfix"></div>
+<h3>
+	Building a Complete Range Input
+</h3>
+<p>
+	Now that we've built a thumb and a track, we can combine the CSS together and make the completed range input.
+</p>
+
+<div class='col-md-8 col-md-offset-2'>
+	<h4>Completed Range Input</h4>
+	<input type="range" class=awesome alt="Styled range input">
+</div>
+<div class="clearfix"></div>
+<h4>
+	Full CSS to Style Range Inputs in All Browsers
+</h4>
+<p>
+	The full CSS for the styled range inputs in all browsers is below.
+</p>
+<div class="clearfix"></div>
+<pre><code>input[type=range] {
+  -webkit-appearance: none;
+  margin: 18px 0;
+  width: 100%;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: #3071a9;
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+input[type=range]::-webkit-slider-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 36px;
+  width: 16px;
+  border-radius: 3px;
+  background: #ffffff;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -14px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #367ebd;
+}
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: #3071a9;
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+input[type=range]::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 36px;
+  width: 16px;
+  border-radius: 3px;
+  background: #ffffff;
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: transparent;
+  border-color: transparent;
+  border-width: 16px 0;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #2a6495;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range]::-ms-fill-upper {
+  background: #3071a9;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range]::-ms-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 36px;
+  width: 16px;
+  border-radius: 3px;
+  background: #ffffff;
+  cursor: pointer;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #3071a9;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #367ebd;
+}</code></pre>
+<h4>
+	Full LESS to Style Range Inputs in All Browsers
+</h4>
+<p>
+	There is a lot of CSS required to make identical range inputs for each browser. Using a preprocessor, you can achieve much more efficient results. Included below is the LESS file use to generate the CSS above.
+</p>
+<pre><code>@track-color: #424242;
+@thumb-color: #555bc8;
+
+@thumb-radius: 8px;
+@thumb-height: 30px;
+@thumb-width: 30px;
+@thumb-shadow-size: 1px;
+@thumb-shadow-blur: 1px;
+@thumb-shadow-color: #111;
+@thumb-border-width: 1px;
+@thumb-border-color: white;
+
+@track-width: 100%;
+@track-height: 10px;
+@track-shadow-size: 2px;
+@track-shadow-blur: 2px;
+@track-shadow-color: #222;
+@track-border-width: 1px;
+@track-border-color: black;
+
+@track-radius: 5px;
+@contrast: 5%;
+
+.shadow(@shadow-size,@shadow-blur,@shadow-color) {
+	box-shadow: @shadow-size @shadow-size @shadow-blur @shadow-color, 0px 0px @shadow-size lighten(@shadow-color,5%);
+}
+
+.track() {
+	width: @track-width;
+	height: @track-height;
+	cursor: pointer;
+    animate: 0.2s;
+    
+}
+
+.thumb() {
+	.shadow(@thumb-shadow-size,@thumb-shadow-blur,@thumb-shadow-color);
+	border: @thumb-border-width solid @thumb-border-color;
+	height: @thumb-height;
+	width: @thumb-width;
+	border-radius: @thumb-radius;
+	background: @thumb-color;
+	cursor: pointer;
+}
+
+
+input[type=range] {
+    -webkit-appearance: none;
+    margin: @thumb-height/2 0;
+    width: @track-width;
+
+    &:focus {
+        outline: none;
+    }
+
+    &::-webkit-slider-runnable-track {
+        .track();
+        .shadow(@track-shadow-size,@track-shadow-blur,@track-shadow-color);
+        background: @track-color;
+        border-radius: @track-radius;
+        border: @track-border-width solid @track-border-color;
+    }
+    
+    &::-webkit-slider-thumb {
+        .thumb();
+        -webkit-appearance: none;
+        margin-top: ((-@track-border-width * 2 + @track-height) / 2) - (@thumb-height / 2);
+    }
+
+    &:focus::-webkit-slider-runnable-track {
+        background: lighten(@track-color, @contrast);
+    }
+
+    &::-moz-range-track {
+        .track();
+        .shadow(@track-shadow-size,@track-shadow-blur,@track-shadow-color);
+        background: @track-color;
+        border-radius: @track-radius;
+         border: @track-border-width solid @track-border-color;
+    }
+    &::-moz-range-thumb {
+       .thumb();
+    }
+
+    &::-ms-track {
+        .track(); 
+        background: transparent;
+        border-color: transparent;
+        border-width: @thumb-width 0;
+        color: transparent;
+    }
+
+    &::-ms-fill-lower {
+        background: darken(@track-color, @contrast);
+        border: @track-border-width solid @track-border-color;
+        border-radius: @track-radius*2;
+        .shadow(@track-shadow-size,@track-shadow-blur,@track-shadow-color);
+    }
+    &::-ms-fill-upper {
+        background: @track-color;
+        border: @track-border-width solid @track-border-color;
+        border-radius: @track-radius*2;
+        .shadow(@track-shadow-size,@track-shadow-blur,@track-shadow-color);
+    }
+    &::-ms-thumb {
+        .thumb();
+    }
+    &:focus::-ms-fill-lower {
+        background: @track-color;
+    }
+    &:focus::-ms-fill-upper {
+        background: lighten(@track-color, @contrast);
+    }
+}</code></pre>
+<h3>Useful Tools</h3>
+<h4>range.css</h4>
+<p>
+	As cross-browser range input styles only became viable in 2014, there are not many tools yet to generate modern styles. <a href="http://danielstern.ca/range.css?ref=css-tricks">range.css is a useful tool for generating CSS styles for range inputs.</a> range.css was made by the author of this article.
 </p>
 </div>
