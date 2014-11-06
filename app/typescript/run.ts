@@ -1,6 +1,6 @@
 declare var angular:any;
 angular.module("DemoApp")
-.run(function($rootScope,presets){
+.run(function($rootScope,presets,$timeout){
 
 	$rootScope.presets = presets;
 
@@ -47,20 +47,33 @@ angular.module("DemoApp")
 		lessVals['contrast'] += "%";
 		less.modifyVars(lessVals);
 
-		if (slider.namespace) {
-			$rootScope.output = __lastCSS.replace(/input\[type=range\]/g,'input[type=range].'+slider.namespace);
-		} else {
-			if (__lastCSS) {
-				console.log("Last CSS?",__lastCSS);
-				$rootScope.output = __lastCSS;
+		// $timeout(function(){
+
+
+			if (slider.namespace) {
+				// $rootScope.output = __lastCSS.replace(/input\[type=range\]/g,'input[type=range].'+slider.namespace);
+			} else {
+				// if (__lastCSS) {
+					// console.log("Last CSS?",__lastCSS);
+					// $rootScope.output = __lastCSS;
+				// }
 			}
-		}
+		// },50);
 
 		// console.log("Last cSS?",__lastCSS);
 
 		// console.log("Generated Values?",angular.toJson(slider));
 
 	},true);
+
+	$rootScope.$watch(function(){
+		return less.lastCSS;
+
+		},function(newVal,oldVal){
+			// console.log("lESS update");
+			$rootScope.output = newVal;
+
+		})
 
 	$rootScope.slider = presets['Bootstrap'];
 	// $rootScope.slider.y= 2;

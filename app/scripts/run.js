@@ -1,4 +1,4 @@
-angular.module("DemoApp").run(function ($rootScope, presets) {
+angular.module("DemoApp").run(function ($rootScope, presets, $timeout) {
     $rootScope.presets = presets;
 
     $rootScope.$watch('slider', function (slider, old) {
@@ -33,14 +33,15 @@ angular.module("DemoApp").run(function ($rootScope, presets) {
         less.modifyVars(lessVals);
 
         if (slider.namespace) {
-            $rootScope.output = __lastCSS.replace(/input\[type=range\]/g, 'input[type=range].' + slider.namespace);
         } else {
-            if (__lastCSS) {
-                console.log("Last CSS?", __lastCSS);
-                $rootScope.output = __lastCSS;
-            }
         }
     }, true);
+
+    $rootScope.$watch(function () {
+        return less.lastCSS;
+    }, function (newVal, oldVal) {
+        $rootScope.output = newVal;
+    });
 
     $rootScope.slider = presets['Bootstrap'];
 });

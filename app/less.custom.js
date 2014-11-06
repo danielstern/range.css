@@ -669,7 +669,7 @@ less.refresh = function (reload, modifyVars) {
                 reject(e);
             }
 
-            window.__lastCSS = css;
+            less.lastCSS = css;
 
             if (webInfo.local) {
                 less.logger.info("loading " + sheet.href + " from cache.");
