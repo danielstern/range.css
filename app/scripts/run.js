@@ -31,17 +31,17 @@ angular.module("DemoApp").run(function ($rootScope, presets, $timeout) {
 
         lessVals['contrast'] += "%";
         less.modifyVars(lessVals);
-
-        if (slider.namespace) {
-        } else {
-        }
     }, true);
 
     $rootScope.$watch(function () {
-        return less.lastCSS;
+        return less.lastCSS + $rootScope.slider.namespace;
     }, function (newVal, oldVal) {
         if (newVal) {
-            $rootScope.output = newVal;
+            if ($rootScope.slider.namespace) {
+                $rootScope.output = newVal.replace(/input\[type=range\]/g, 'input[type=range].' + $rootScope.slider.namespace);
+            } else {
+                $rootScope.output = newVal;
+            }
         }
     });
 

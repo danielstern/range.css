@@ -50,19 +50,15 @@ angular.module("DemoApp")
 
 		lessVals['contrast'] += "%";
 		less.modifyVars(lessVals);
+
+
 		// less.refreshStyles(lessVals);
 
 		// $timeout(function(){
 
 
-			if (slider.namespace) {
-				// $rootScope.output = __lastCSS.replace(/input\[type=range\]/g,'input[type=range].'+slider.namespace);
-			} else {
-				// if (__lastCSS) {
-					// console.log("Last CSS?",__lastCSS);
-					// $rootScope.output = __lastCSS;
-				// }
-			}
+			
+
 		// },50);
 
 		// console.log("Last cSS?",__lastCSS);
@@ -71,14 +67,19 @@ angular.module("DemoApp")
 
 	},true);
 
+	// $rootScope.watch(slider)
+
 	$rootScope.$watch(function(){
-		return less.lastCSS;
+		return less.lastCSS + $rootScope.slider.namespace;
 
 		},function(newVal,oldVal){
 			// console.log("lESS update");
 			if (newVal) {
-
-				$rootScope.output = newVal;
+				if ($rootScope.slider.namespace) {
+					$rootScope.output = newVal.replace(/input\[type=range\]/g,'input[type=range].'+$rootScope.slider.namespace);
+				} else {
+					$rootScope.output = newVal;
+				}
 			}
 
 		})
