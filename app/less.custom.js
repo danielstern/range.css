@@ -523,6 +523,10 @@ function loadStyles(modifyVars) {
                     } else {
                         style.innerHTML = result.css;
                     }
+                    console.log("Generated css...",result.css);
+                    if (result.css.length > 10) {
+                        less.lastCSS = result.css;
+                    }
                 }, null, style),
                 function(e) {
                     errors.add(e, "inline");
@@ -669,7 +673,11 @@ less.refresh = function (reload, modifyVars) {
                 reject(e);
             }
 
-            less.lastCSS = css;
+            if (css) {
+                less.lastCSS = css;
+            } else {
+                console.warn("danger will robinson... no css");
+            }
 
             if (webInfo.local) {
                 less.logger.info("loading " + sheet.href + " from cache.");

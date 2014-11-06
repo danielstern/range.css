@@ -1,8 +1,12 @@
 declare var angular:any;
+declare var _:any;
+
 angular.module("DemoApp")
 .run(function($rootScope,presets,$timeout){
 
 	$rootScope.presets = presets;
+
+
 
 	$rootScope.$watch('slider',function(slider,old){
 		var lessVals = angular.copy(slider);
@@ -46,6 +50,7 @@ angular.module("DemoApp")
 
 		lessVals['contrast'] += "%";
 		less.modifyVars(lessVals);
+		// less.refreshStyles(lessVals);
 
 		// $timeout(function(){
 
@@ -71,9 +76,14 @@ angular.module("DemoApp")
 
 		},function(newVal,oldVal){
 			// console.log("lESS update");
-			$rootScope.output = newVal;
+			if (newVal) {
+
+				$rootScope.output = newVal;
+			}
 
 		})
+
+	$rootScope.less = less;
 
 	$rootScope.slider = presets['Bootstrap'];
 	// $rootScope.slider.y= 2;

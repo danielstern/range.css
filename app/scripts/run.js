@@ -40,8 +40,12 @@ angular.module("DemoApp").run(function ($rootScope, presets, $timeout) {
     $rootScope.$watch(function () {
         return less.lastCSS;
     }, function (newVal, oldVal) {
-        $rootScope.output = newVal;
+        if (newVal) {
+            $rootScope.output = newVal;
+        }
     });
+
+    $rootScope.less = less;
 
     $rootScope.slider = presets['Bootstrap'];
 });

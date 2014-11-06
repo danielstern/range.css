@@ -125,6 +125,18 @@
 
     </script>
 
+    <script>
+      less = {
+        env: "development",
+        async: true,
+        fileAsync: true,
+        poll: 50,
+        functions: {},
+        // dumpLineNumbers: "comments",
+        relativeUrls: false,
+        // rootpath: ":/a.com/"
+      };
+    </script>
 
 
     <!-- build:js(.) scripts/vendor.js -->
@@ -133,6 +145,7 @@
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/less/dist/less-1.7.5.js"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     <script src="less.custom.js"></script>
