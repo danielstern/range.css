@@ -12,7 +12,6 @@ angular.module("DemoApp")
 
 	function updateSlider(){
 		var slider = $rootScope.slider;
-		console.log("Slider watch...");
 		var lessVals = angular.copy(slider);
 
 		function toRGBA(rgbObject) {
@@ -67,3 +66,54 @@ angular.module("DemoApp")
 	$rootScope.slider = presets['Bootstrap'];
 
 })
+.directive("input",function($compile){
+	return {
+		restrict:"E",
+		link:function(scope,elem,attrs){
+			console.log("An input",attrs.type);
+			if (attrs.type && attrs.type.indexOf("/") > -1) {
+				console.log("A split input",elem);
+				var input = angular.element("<input>");
+				input.attr("ng-model",attrs.ngModel);
+				$compile(input)(scope);
+				elem.after(input);
+				// elem.after(angular.element("<input>"));
+				// elem.after(angular.element("<p>splitty...</p>"));
+				elem.hide();
+			} else {
+				// console.log("not a split input,",attrs.$attr.type)
+			}
+		},
+		// replace:true,
+		// compile:function(element,attrs) {
+		// 	if (attrs.nospawn) {
+		// 		return "<div></div>";
+		// 	}
+		// },
+		// scope:{
+	 //        bindModel:'=ngModel'
+	 //    },
+	 //    template:function(tElem,tAttr){
+		// // console.log("templating...",tAttr);
+		// // var tmpl = "";
+		
+		// // var div = angular.element("<div>");
+		// // div.append("<input>");
+		// // var input = div.find("input");
+		// // input.attr("ng-model",tAttr.bindModel);
+		// // input.attr("nospawn",true);
+		// // console.log("Returning...",div[0].outerHTML);
+		// // return div[0].outerHTML;
+		// return "<div inputholster></div>";
+		// // return "";
+		// }
+	}
+	})
+// .directive("inputholster",function(){
+// 	return {
+// 		restrict:"AE",
+// 		link:function(){
+
+// 		}
+// 	}
+// 	})
