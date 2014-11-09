@@ -58,14 +58,26 @@ angular.module("DemoApp").run(function ($rootScope, presets, $timeout) {
     return {
         restrict: "E",
         link: function (scope, elem, attrs) {
-            console.log("An input", attrs.type);
+            var container = elem.after("<div></div>").next();
             if (attrs.type && attrs.type.indexOf("/") > -1) {
-                console.log("A split input", elem);
-                var input = angular.element("<input>");
-                input.attr("ng-model", attrs.ngModel);
-                $compile(input)(scope);
-                elem.after(input);
+                console.log("A split input", elem, attrs, elem.attr("class"));
+                var types = attrs.type.split("/");
+                types.forEach(function (type) {
+                    var input = angular.element("<input>");
 
+                    for (var key in attrs) {
+                        if (key[0] !== "$") {
+                            input.attr(key, attrs[key]);
+                        }
+                    }
+                    input.attr("ng-model", attrs.ngModel);
+                    input.attr("class", elem.attr("class"));
+                    input.attr("type", type);
+                    input.attr("style", "width:50%;display:inline-block;vertical-align:middle;");
+
+                    $compile(input)(scope);
+                    container.append(input);
+                });
                 elem.hide();
             } else {
             }

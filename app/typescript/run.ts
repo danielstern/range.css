@@ -70,15 +70,31 @@ angular.module("DemoApp")
 	return {
 		restrict:"E",
 		link:function(scope,elem,attrs){
-			console.log("An input",attrs.type);
+			// console.log("An input",attrs.type);
+			var container = elem.after("<div></div>").next();
 			if (attrs.type && attrs.type.indexOf("/") > -1) {
-				console.log("A split input",elem);
-				var input = angular.element("<input>");
-				input.attr("ng-model",attrs.ngModel);
-				$compile(input)(scope);
-				elem.after(input);
-				// elem.after(angular.element("<input>"));
-				// elem.after(angular.element("<p>splitty...</p>"));
+				console.log("A split input",elem,attrs,elem.attr("class"));
+				var types = attrs.type.split("/");
+				types.forEach(function(type){
+
+				// var input = elem.clone();
+					var input = angular.element("<input>");
+
+					for (var key in attrs) {
+						if (key[0] !== "$") {
+							input.attr(key,attrs[key]);
+						}
+					}
+					input.attr("ng-model",attrs.ngModel);
+					input.attr("class",elem.attr("class"));
+					input.attr("type",type);
+					input.attr("style","width:50%;display:inline-block;vertical-align:middle;")
+					// input.attr("style","width:50%;display:inline-block;")
+					$compile(input)(scope);
+					container.append(input);
+					// elem.after(angular.element("<input>"));
+					// elem.after(angular.element("<p>splitty...</p>"));
+				})
 				elem.hide();
 			} else {
 				// console.log("not a split input,",attrs.$attr.type)
