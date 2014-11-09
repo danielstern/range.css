@@ -1,0 +1,86 @@
+<!-- <form class="form form-horizontal"> -->
+<div class='slider-form'>
+
+<section>
+<div class=col-sm-7>
+<h3>Thumb</h3>
+		Thumb Color
+		<div color-picker color=slider['thumb-color']>col'r picker</div>
+		<input name=thumb-roundness ng-model=slider['thumb-height'] label="Thumb Height"  type='range/text' class=form-control min=0 max=50 step=1>
+		<input name=thumb-roundness ng-model=slider['thumb-width']  label="Thumb Width" class=form-control type=range/text min=0 max=50 step=1>
+		<input name=thumb-roundness ng-model=slider['thumb-radius'] label="Thumb Radius" class=form-control type=range/text min=0 max=50 step=1>
+
+	<h4>Thumb Border</h4>
+		Thumb Border Color
+		<div color-picker color=slider['thumb-border-color']>col'r picker</div>
+		<input name=thumb-border-width ng-model=slider['thumb-border-width']  label="Thumb Border Width" class=form-control type=range/text min=0 max=10 step=0.1>
+		Thumb Shadow Color
+		<div color-picker color=slider['thumb-shadow-color']>col'r picker</div>
+		<input ng-model=slider['thumb-shadow-size']  label="Thumb Shadow Size" class=form-control type=range/text min=0 max=15 step=0.1>
+		<input ng-model=slider['thumb-shadow-blur'] label="Thumb Shadow Blur" class=form-control type=range/text min=0 max=15 step=0.1>
+	</div>
+	 <div class=col-sm-5>
+	 <h2>
+	  CSS
+	 </h2>
+	<textarea width=500px height=500px ng-model=output></textarea>
+	</div>
+	<div class=clearfix></div>
+</section>
+
+<section>
+<div class=col-sm-7>
+	<h3>Track</h3>
+		Track Color
+		<div color-picker color=slider['track-color']>col'r picker</div>
+		<input name=thumb-roundness ng-model=slider['track-height'] label="Track Height" class=form-control type=range/text min=0 max=50 step=0.1>
+		<input name=thumb-roundness ng-model=slider['track-radius']  label="Track Edge Softness" class=form-control type=range/text min=0 max=25 step=0.1>
+		<input name=thumb-border-width ng-model=slider['track-border-width'] label="Track Border Width" class=form-control type=range/text min=0 max=10 step=0.1>
+		Track Border Color
+				<div color-picker color=slider['track-border-color']>col'r picker</div>
+
+	<h4>Track Shadow</h4>
+		Track Shadow Color
+				<div color-picker color=slider['track-shadow-color']>col'r picker</div>
+
+		<input ng-model=slider['track-shadow-size'] label="Track Shadow Size" class=form-control type=range/text min=0 max=15 step=0.1>
+
+		<input ng-model=slider['track-shadow-blur'] label="Track Shadow Blur" class=form-control type=range/text type=range min=0 max=15 step=0.1>
+</div>
+ <div class=col-sm-5>
+ <h2>
+  CSS
+ </h2>
+<textarea width=500px height=500px ng-model=output></textarea>
+</div>
+<div class=clearfix></div>
+</section>
+
+<section>
+	
+
+
+	<div class=col-sm-7>
+	<h3>General</h3>
+
+	
+	<label for=contrast>
+		Contrast (applies to focused sliders)
+		<input name=thumb-roundness ng-model=slider['contrast']  label="" class=form-control type=range/text min=0 max=50 step=1>
+	</label>
+
+	<label for=namespace>
+		Namespace (adds a class to generated css)
+		<input class=form-control name=thumb-roundness ng-model=slider['namespace']  label="" type=text>
+	</label>
+	</div>
+ <div class=col-sm-5>
+ <h2>
+  CSS
+ </h2>
+<textarea width=500px height=500px ng-model=output></textarea>
+</div>
+	<div class=clearfix></div>
+
+
+</section>
