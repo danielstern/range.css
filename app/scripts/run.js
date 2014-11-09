@@ -9,7 +9,7 @@ angular.module("DemoApp").run(function ($rootScope, presets, $timeout) {
         var lessVals = angular.copy(slider);
 
         function toRGBA(rgbObject) {
-            return "rgba(" + rgbObject.r + "," + rgbObject.g + "," + rgbObject.b + "," + rgbObject.a + ")";
+            return "rgba(" + parseFloat(rgbObject.r) + "," + parseFloat(rgbObject.g) + "," + parseFloat(rgbObject.b) + "," + parseFloat(rgbObject.a) + ")";
         }
 
         lessVals['thumb-color'] = toRGBA(lessVals['thumb-color']);
