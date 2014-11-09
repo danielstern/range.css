@@ -8,15 +8,17 @@ angular.module("DemoApp")
 
 
 
-	$rootScope.$watch('slider',function(slider,old){
+	$rootScope.$watch('slider',updateSlider,true);
+
+	function updateSlider(){
+		var slider = $rootScope.slider;
+		console.log("Slider watch...");
 		var lessVals = angular.copy(slider);
 
 		function toRGBA(rgbObject) {
 			return "rgba("+rgbObject.r+","+rgbObject.g+","+rgbObject.b+","+rgbObject.a+")";
 
 		}
-
-		// var __lastCSS = __lastCSS || '';
 
 		lessVals['thumb-color'] = toRGBA(lessVals['thumb-color']);
 		lessVals['thumb-border-color'] = toRGBA(lessVals['thumb-border-color']);
@@ -25,15 +27,6 @@ angular.module("DemoApp")
 		lessVals['track-color'] = toRGBA(lessVals['track-color']);
 		lessVals['track-border-color'] = toRGBA(lessVals['track-border-color']);
 		lessVals['track-shadow-color'] = toRGBA(lessVals['track-shadow-color']);
-
-
-
-
-
-		// lessVals['thumb-color'] = "rgba("+lessVals['thumb-color'].r+","+lessVals['thumb-color'].g+","+lessVals['thumb-color'].b+","+lessVals['thumb-color'].a+")";
-		// lessVals['thumb-color'] = "rgba("+lessVals['thumb-color'].r+","+lessVals['thumb-color'].g+","+lessVals['thumb-color'].b+","+lessVals['thumb-color'].a+")";
-		// lessVals['thumb-color'] = "rgba("+lessVals['thumb-color'].r+","+lessVals['thumb-color'].g+","+lessVals['thumb-color'].b+","+lessVals['thumb-color'].a+")";
-		// console.log("Slider...",slider,lessVals);
 
 		lessVals['track-radius'] += "px";
 		lessVals['track-shadow-size'] += "px";
@@ -49,36 +42,21 @@ angular.module("DemoApp")
 		lessVals['thumb-radius'] += "px";
 
 		lessVals['contrast'] += "%";
+
 		less.modifyVars(lessVals);
+	}
 
-
-		// less.refreshStyles(lessVals);
-
-		// $timeout(function(){
-
-
-			
-
-		// },50);
-
-		// console.log("Last cSS?",__lastCSS);
-
-		// console.log("Generated Values?",angular.toJson(slider));
-
-	},true);
-
-	// $rootScope.watch(slider)
+	// -> Fix for IE
+	setTimeout(updateSlider,1000);
 
 	$rootScope.$watch(function(){
 		return less.lastCSS + $rootScope.slider.namespace;
-
 		},function(newVal,oldVal){
-			// console.log("lESS update");
 			if (newVal) {
 				if ($rootScope.slider.namespace) {
-					$rootScope.output = newVal.replace(/input\[type=range\]/g,'input[type=range].'+$rootScope.slider.namespace);
+					$rootScope.output = less.lastCSS.replace(/input\[type=range\]/g,'input[type=range].'+$rootScope.slider.namespace);
 				} else {
-					$rootScope.output = newVal;
+					$rootScope.output = less.lastCSS;
 				}
 			}
 
@@ -87,8 +65,5 @@ angular.module("DemoApp")
 	$rootScope.less = less;
 
 	$rootScope.slider = presets['Bootstrap'];
-	// $rootScope.slider.y= 2;
-
-
 
 })
