@@ -90,7 +90,7 @@ angular.module("DemoApp").run(function ($rootScope, presets, $timeout) {
                     $compile(input)(scope);
                 }
                 ;
-                input.addClass();
+
                 container.append(input);
             });
             elem.hide();

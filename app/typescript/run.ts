@@ -109,7 +109,7 @@ angular.module("DemoApp")
 					$compile(input)(scope);
 					// container.append(input);
 				};
-				input.addClass()
+				// input.addClass()
 				container.append(input);
 				// elem.after(angular.element("<input>"));
 				// elem.after(angular.element("<p>splitty...</p>"));
