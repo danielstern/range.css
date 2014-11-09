@@ -48,7 +48,7 @@
 input[type=range] {
     -webkit-appearance: none;
     width: @track-width;
-    margin: @thumb-height/2 0;
+    margin: (max(@thumb-height - @track-height, 0)) / 2 0;
 
     &:focus {
         outline: none;
