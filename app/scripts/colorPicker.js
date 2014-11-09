@@ -1,5 +1,3 @@
-console.log("Color picker file");
-
 angular.module("colorPicker", []).directive("colorPicker", function () {
     return {
         restrict: "AE",

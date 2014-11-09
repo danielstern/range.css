@@ -48,7 +48,8 @@
 input[type=range] {
     -webkit-appearance: none;
     width: @track-width;
-    margin: (max(@thumb-height - @track-height, 0)) / 2 0;
+    // margin: (@thumb-height - @track-height) * 2 0;
+    margin: (@thumb-height - @track-height) / 2 0;
 
     &:focus {
         outline: none;
@@ -87,7 +88,8 @@ input[type=range] {
         .track(); 
         background: transparent;
         border-color: transparent;
-        border-width: @thumb-width 0;
+        // border-width: @thumb-width 0;
+        // margin-top: -15px;
         color: transparent;
     }
 
@@ -105,6 +107,7 @@ input[type=range] {
     }
     &::-ms-thumb {
         .thumb();
+        height: min(@track-height,@thumb-height);
     }
     &:focus::-ms-fill-lower {
         background: @track-color;

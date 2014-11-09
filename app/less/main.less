@@ -7,6 +7,7 @@ input[type=range] {
 
 .jumbotron input {
 	width: 100% !important;
+	// margin-bottom: 32px !important;
 }
 
 .slider-form {
@@ -33,4 +34,34 @@ textarea {
 
 .social {
 	margin-top:16px;
+}
+
+input[type=range].form-control {
+	border: none;
+	box-shadow: none;
+}
+
+inputs input, inputs div {
+	display: inline-block !important;
+	vertical-align: middle;
+	
+
+}
+
+inputs div:nth-child(1) {
+	width: 20%;
+	text-align: center;
+	font-weight: bold;
+}
+
+inputs input[type=range]:nth-child(2) {
+	width: 50%;
+}
+
+inputs input[type=text]:nth-child(2) {
+	width: 50%;
+}
+
+inputs input[type=text]:nth-child(3) {
+	width: 30%;
 }

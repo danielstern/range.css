@@ -12,7 +12,6 @@ angular.module("DemoApp")
 
 	function updateSlider(){
 		var slider = $rootScope.slider;
-		console.log("Slider watch...");
 		var lessVals = angular.copy(slider);
 
 		function toRGBA(rgbObject) {
@@ -67,3 +66,86 @@ angular.module("DemoApp")
 	$rootScope.slider = presets['Bootstrap'];
 
 })
+.directive("input",function($compile){
+	return {
+		restrict:"E",
+		link:function(scope,elem,attrs){
+			// console.log("An input",attrs.type);
+			var container = elem.after("<inputs></inputs>").next();
+			var inputs;
+			if (attrs.type && attrs.type.indexOf("/") > -1) {
+				inputs = attrs.type.split("/");
+			} else {
+				return;
+			}
+
+			if (attrs.label) {
+				inputs.unshift("label");
+			}
+
+			inputs.forEach(function(type){
+
+				var input;
+			// var input = elem.clone();
+				if (type === "label") {
+					input = angular.element("<div>"+attrs.label+"</div>");
+					// label.attr("style","width:"+100 / inputs.length +"%;display:inline-block;vertical-align:middle;")
+					// label.attr("style","width:"+100 / inputs.length +"%;display:inline-block;vertical-align:middle;")
+					// container.append(label);
+				}
+				else {
+					input = angular.element("<input>");
+
+					for (var key in attrs) {
+						if (key[0] !== "$") {
+							input.attr(key,attrs[key]);
+						}
+					}
+					input.attr("ng-model",attrs.ngModel);
+					input.attr("class",elem.attr("class"));
+					input.attr("type",type);
+					// input.attr("style","width:"+100 / inputs.length +"%;display:inline-block;vertical-align:middle;")
+					// input.attr("style","width:50%;display:inline-block;")
+					$compile(input)(scope);
+					// container.append(input);
+				};
+				// input.addClass()
+				container.append(input);
+				// elem.after(angular.element("<input>"));
+				// elem.after(angular.element("<p>splitty...</p>"));
+			})
+			elem.hide();
+		},
+		// replace:true,
+		// compile:function(element,attrs) {
+		// 	if (attrs.nospawn) {
+		// 		return "<div></div>";
+		// 	}
+		// },
+		// scope:{
+	 //        bindModel:'=ngModel'
+	 //    },
+	 //    template:function(tElem,tAttr){
+		// // console.log("templating...",tAttr);
+		// // var tmpl = "";
+		
+		// // var div = angular.element("<div>");
+		// // div.append("<input>");
+		// // var input = div.find("input");
+		// // input.attr("ng-model",tAttr.bindModel);
+		// // input.attr("nospawn",true);
+		// // console.log("Returning...",div[0].outerHTML);
+		// // return div[0].outerHTML;
+		// return "<div inputholster></div>";
+		// // return "";
+		// }
+	}
+	})
+// .directive("inputholster",function(){
+// 	return {
+// 		restrict:"AE",
+// 		link:function(){
+
+// 		}
+// 	}
+// 	})

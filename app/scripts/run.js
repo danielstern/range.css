@@ -5,7 +5,6 @@ angular.module("DemoApp").run(function ($rootScope, presets, $timeout) {
 
     function updateSlider() {
         var slider = $rootScope.slider;
-        console.log("Slider watch...");
         var lessVals = angular.copy(slider);
 
         function toRGBA(rgbObject) {
@@ -55,4 +54,46 @@ angular.module("DemoApp").run(function ($rootScope, presets, $timeout) {
     $rootScope.less = less;
 
     $rootScope.slider = presets['Bootstrap'];
+}).directive("input", function ($compile) {
+    return {
+        restrict: "E",
+        link: function (scope, elem, attrs) {
+            var container = elem.after("<inputs></inputs>").next();
+            var inputs;
+            if (attrs.type && attrs.type.indexOf("/") > -1) {
+                inputs = attrs.type.split("/");
+            } else {
+                return;
+            }
+
+            if (attrs.label) {
+                inputs.unshift("label");
+            }
+
+            inputs.forEach(function (type) {
+                var input;
+
+                if (type === "label") {
+                    input = angular.element("<div>" + attrs.label + "</div>");
+                } else {
+                    input = angular.element("<input>");
+
+                    for (var key in attrs) {
+                        if (key[0] !== "$") {
+                            input.attr(key, attrs[key]);
+                        }
+                    }
+                    input.attr("ng-model", attrs.ngModel);
+                    input.attr("class", elem.attr("class"));
+                    input.attr("type", type);
+
+                    $compile(input)(scope);
+                }
+                ;
+
+                container.append(input);
+            });
+            elem.hide();
+        }
+    };
 });

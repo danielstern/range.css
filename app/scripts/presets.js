@@ -1,4 +1,3 @@
-console.log("Presets file.");
 angular.module("DemoApp").value("presets", {
     "Bootstrap": {
         "thumb-color": {
