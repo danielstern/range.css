@@ -71,14 +71,30 @@ angular.module("DemoApp")
 		restrict:"E",
 		link:function(scope,elem,attrs){
 			// console.log("An input",attrs.type);
-			var container = elem.after("<div></div>").next();
+			var container = elem.after("<inputs></inputs>").next();
+			var inputs;
 			if (attrs.type && attrs.type.indexOf("/") > -1) {
-				console.log("A split input",elem,attrs,elem.attr("class"));
-				var types = attrs.type.split("/");
-				types.forEach(function(type){
+				inputs = attrs.type.split("/");
+			} else {
+				return;
+			}
 
-				// var input = elem.clone();
-					var input = angular.element("<input>");
+			if (attrs.label) {
+				inputs.unshift("label");
+			}
+
+			inputs.forEach(function(type){
+
+				var input;
+			// var input = elem.clone();
+				if (type === "label") {
+					input = angular.element("<div>"+attrs.label+"</div>");
+					// label.attr("style","width:"+100 / inputs.length +"%;display:inline-block;vertical-align:middle;")
+					// label.attr("style","width:"+100 / inputs.length +"%;display:inline-block;vertical-align:middle;")
+					// container.append(label);
+				}
+				else {
+					input = angular.element("<input>");
 
 					for (var key in attrs) {
 						if (key[0] !== "$") {
@@ -88,17 +104,17 @@ angular.module("DemoApp")
 					input.attr("ng-model",attrs.ngModel);
 					input.attr("class",elem.attr("class"));
 					input.attr("type",type);
-					input.attr("style","width:50%;display:inline-block;vertical-align:middle;")
+					// input.attr("style","width:"+100 / inputs.length +"%;display:inline-block;vertical-align:middle;")
 					// input.attr("style","width:50%;display:inline-block;")
 					$compile(input)(scope);
-					container.append(input);
-					// elem.after(angular.element("<input>"));
-					// elem.after(angular.element("<p>splitty...</p>"));
-				})
-				elem.hide();
-			} else {
-				// console.log("not a split input,",attrs.$attr.type)
-			}
+					// container.append(input);
+				};
+				input.addClass()
+				container.append(input);
+				// elem.after(angular.element("<input>"));
+				// elem.after(angular.element("<p>splitty...</p>"));
+			})
+			elem.hide();
 		},
 		// replace:true,
 		// compile:function(element,attrs) {

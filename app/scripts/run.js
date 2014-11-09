@@ -58,12 +58,25 @@ angular.module("DemoApp").run(function ($rootScope, presets, $timeout) {
     return {
         restrict: "E",
         link: function (scope, elem, attrs) {
-            var container = elem.after("<div></div>").next();
+            var container = elem.after("<inputs></inputs>").next();
+            var inputs;
             if (attrs.type && attrs.type.indexOf("/") > -1) {
-                console.log("A split input", elem, attrs, elem.attr("class"));
-                var types = attrs.type.split("/");
-                types.forEach(function (type) {
-                    var input = angular.element("<input>");
+                inputs = attrs.type.split("/");
+            } else {
+                return;
+            }
+
+            if (attrs.label) {
+                inputs.unshift("label");
+            }
+
+            inputs.forEach(function (type) {
+                var input;
+
+                if (type === "label") {
+                    input = angular.element("<div>" + attrs.label + "</div>");
+                } else {
+                    input = angular.element("<input>");
 
                     for (var key in attrs) {
                         if (key[0] !== "$") {
@@ -73,14 +86,14 @@ angular.module("DemoApp").run(function ($rootScope, presets, $timeout) {
                     input.attr("ng-model", attrs.ngModel);
                     input.attr("class", elem.attr("class"));
                     input.attr("type", type);
-                    input.attr("style", "width:50%;display:inline-block;vertical-align:middle;");
 
                     $compile(input)(scope);
-                    container.append(input);
-                });
-                elem.hide();
-            } else {
-            }
+                }
+                ;
+                input.addClass();
+                container.append(input);
+            });
+            elem.hide();
         }
     };
 });
