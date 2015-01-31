@@ -31,7 +31,7 @@
 @contrast: 5%;
 
 
-.shadow(@shadow-size,@shadow-blur,@shadow-color, @shadow-alpha) when not (@shadow-alpha = 0){
+.shadow(@shadow-size,@shadow-blur,@shadow-color, @shadow-alpha) when not (@shadow-alpha >= 0){
   box-shadow: 0 @shadow-size @shadow-blur fade(@shadow-color, @shadow-alpha * 100%), 0 0 @shadow-size lighten(@shadow-color, @contrast);
 }
 
