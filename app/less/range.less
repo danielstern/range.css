@@ -1,4 +1,5 @@
 @thumb-color: #555bc8;
+@thumb-color-alpha: 1;
 @thumb-radius: 8px;
 @thumb-height: 30px;
 @thumb-width: 30px;
@@ -6,113 +7,126 @@
 @thumb-shadow-size: 1px;
 @thumb-shadow-blur: 1px;
 @thumb-shadow-color: #111;
+@thumb-shadow-color-alpha: 1;
 
 @thumb-border-width: 1px;
 @thumb-border-color: white;
+@thumb-border-color-alpha: 1;
 
 @track-width: 100%;
 @track-color: #424242;
+@track-color-alpha: 1;
 @track-height: 10px;
 
 @track-shadow-size: 2px;
 @track-shadow-blur: 2px;
 @track-shadow-color: #222;
+@track-shadow-color-alpha: 1;
 
 @track-border-width: 1px;
 @track-border-color: black;
+@track-border-color-alpha: 1;
 
 @track-radius: 5px;
 @contrast: 5%;
 
-.shadow(@shadow-size,@shadow-blur,@shadow-color) {
-	box-shadow: @shadow-size @shadow-size @shadow-blur @shadow-color, 0px 0px @shadow-size lighten(@shadow-color,5%);
+
+.shadow(@shadow-size,@shadow-blur,@shadow-color, @shadow-alpha) when not (@shadow-alpha >= 0){
+  box-shadow: 0 @shadow-size @shadow-blur fade(@shadow-color, @shadow-alpha * 100%), 0 0 @shadow-size lighten(@shadow-color, @contrast);
 }
 
-.track() {
-	width: @track-width;
-	height: @track-height;
-	cursor: pointer;
+.border(@border-width, @border-style, @border-color, @border-color-alpha) when not (@border-width <= 0),(@border-color-alpha = 0){
+  border: @border-width @border-style fade(@border-color, @border-color-alpha * 100%);
+}
+.border(@border-width, @border-style, @border-color, @border-color-alpha) when (@border-width <= 0){
+  border: 0;
 }
 
-.thumb() {
-    .shadow(@thumb-shadow-size,@thumb-shadow-blur,@thumb-shadow-color);
-    border: @thumb-border-width solid @thumb-border-color;
-    height: @thumb-height;
-    width: @thumb-width;
-    border-radius: @thumb-radius;
-    background: @thumb-color;
-    cursor: pointer;
+.border-radius(@radius) when (@radius > 0){
+  border-radius: @radius;
+}
+
+.track(){
+  width: @track-width;
+  height: @track-height;
+  cursor: pointer;
 }
 
 
-input[type=range] {
+.thumb(){
+  width: @thumb-width;
+  height: @thumb-height;
+  background: fade(@thumb-color, @thumb-color-alpha * 100%);
+  .border(@thumb-border-width, solid, @thumb-border-color, @thumb-border-color-alpha);
+  .border-radius(@thumb-radius);
+  cursor: pointer;
+  .shadow(@thumb-shadow-size,@thumb-shadow-blur,@thumb-shadow-color,@thumb-shadow-color-alpha);
+}
+
+
+input[type=range]{
+  width: @track-width;
+  // margin: (@thumb-height - @track-height) * 2 0;
+  margin: (@thumb-height - @track-height) / 2 0;
+
+  -webkit-appearance: none;
+  &:focus{
+    outline: none;
+  }
+  &::-webkit-slider-runnable-track{
+    background: fade(@track-color, @track-color-alpha * 100%);
+    .border(@track-border-width, solid, @track-border-color, @track-border-color-alpha);
+    .border-radius(@track-radius);
+    .track();
+    .shadow(@track-shadow-size,@track-shadow-blur,@track-shadow-color,@track-shadow-color-alpha);
+  }
+  &::-webkit-slider-thumb{
+    margin-top: (-@track-border-width + @track-height / 2) - (@thumb-height / 2);
+    .thumb();
+
     -webkit-appearance: none;
-    width: @track-width;
-    // margin: (@thumb-height - @track-height) * 2 0;
-    margin: (@thumb-height - @track-height) / 2 0;
-
-    &:focus {
-        outline: none;
-    }
-
-    &::-webkit-slider-runnable-track {
-        .track();
-        .shadow(@track-shadow-size,@track-shadow-blur,@track-shadow-color);
-        background: @track-color;
-        border-radius: @track-radius;
-        border: @track-border-width solid @track-border-color;
-    }
-    
-    &::-webkit-slider-thumb {
-        .thumb();
-        -webkit-appearance: none;
-        margin-top: (-@track-border-width + @track-height / 2) - (@thumb-height / 2);
-    }
-
-    &:focus::-webkit-slider-runnable-track {
-        background: lighten(@track-color, @contrast);
-    }
-
-    &::-moz-range-track {
-        .track();
-        .shadow(@track-shadow-size,@track-shadow-blur,@track-shadow-color);
-        background: @track-color;
-        border-radius: @track-radius;
-        border: @track-border-width solid @track-border-color;
-    }
-    &::-moz-range-thumb {
-       .thumb();
-    }
-
-    &::-ms-track {
-        .track(); 
-        background: transparent;
-        border-color: transparent;
-        // border-width: @thumb-width 0;
-        // margin-top: -15px;
-        color: transparent;
-    }
-
-    &::-ms-fill-lower {
-        background: darken(@track-color, @contrast);
-        border: @track-border-width solid @track-border-color;
-        border-radius: @track-radius*2;
-        .shadow(@track-shadow-size,@track-shadow-blur,@track-shadow-color);
-    }
-    &::-ms-fill-upper {
-        background: @track-color;
-        border: @track-border-width solid @track-border-color;
-        border-radius: @track-radius*2;
-        .shadow(@track-shadow-size,@track-shadow-blur,@track-shadow-color);
-    }
-    &::-ms-thumb {
-        .thumb();
-        height: min(@track-height,@thumb-height);
-    }
-    &:focus::-ms-fill-lower {
-        background: @track-color;
-    }
-    &:focus::-ms-fill-upper {
-        background: lighten(@track-color, @contrast);
-    }
+  }
+  &:focus::-webkit-slider-runnable-track{
+    background: lighten(@track-color, @contrast);
+  }
+  &::-moz-range-track{
+    background: fade(@track-color, @track-color-alpha * 100%);
+    .border(@track-border-width, solid, @track-border-color, @track-border-color-alpha);
+    .border-radius(@track-radius);
+    .track();
+    .shadow(@track-shadow-size,@track-shadow-blur,@track-shadow-color,@track-shadow-color-alpha);
+  }
+  &::-moz-range-thumb{
+    .thumb();
+  }
+  &::-ms-track{
+    background: transparent;
+    border-color: transparent;
+    // border-width: @thumb-width 0;
+    // margin-top: -15px;
+    color: transparent;
+    .track();
+  }
+  &::-ms-fill-lower{
+    background: darken(@track-color, @contrast);
+    .border(@track-border-width, solid, @track-border-color, @track-border-color-alpha);
+    .border-radius(@track-radius*2);
+    .shadow(@track-shadow-size,@track-shadow-blur,@track-shadow-color,@track-shadow-color-alpha);
+  }
+  &::-ms-fill-upper{
+    background: fade(@track-color, @track-color-alpha * 100%);
+    .border(@track-border-width, solid, @track-border-color, @track-border-color-alpha);
+    .border-radius(@track-radius*2);
+    .shadow(@track-shadow-size,@track-shadow-blur,@track-shadow-color,@track-shadow-color-alpha);
+  }
+  &::-ms-thumb{
+    height: min(@track-height,@thumb-height);
+    .thumb();
+  }
+  &:focus::-ms-fill-lower{
+    background: fade(@track-color, @track-color-alpha * 100%);
+  }
+  &:focus::-ms-fill-upper{
+    background: lighten(@track-color, @contrast);
+  }
 }

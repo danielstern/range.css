@@ -6,41 +6,48 @@ angular.module("DemoApp")
 
 	$rootScope.presets = presets;
 
-
-
 	$rootScope.$watch('slider',updateSlider,true);
 
 	function updateSlider(){
 		var slider = $rootScope.slider;
 		var lessVals = angular.copy(slider);
 
-		function toRGBA(rgbObject) {
-			return "rgba("+parseFloat(rgbObject.r)+","+parseFloat(rgbObject.g)+","+parseFloat(rgbObject.b)+","+parseFloat(rgbObject.a)+")";
+    function toRGB(rgbaObject) {
+      return "rgb(" + parseFloat(rgbaObject.r) + "," + parseFloat(rgbaObject.g) + "," + parseFloat(rgbaObject.b) + ")";
+    }
 
-		}
+    function getAlpha(rgbaObject) {
+      return parseFloat(rgbaObject.a);
+    }
 
-		lessVals['thumb-color'] = toRGBA(lessVals['thumb-color']);
-		lessVals['thumb-border-color'] = toRGBA(lessVals['thumb-border-color']);
-		lessVals['thumb-shadow-color'] = toRGBA(lessVals['thumb-shadow-color']);
+    lessVals['thumb-color-alpha'] = getAlpha(lessVals['thumb-color']);
+    lessVals['thumb-color'] = toRGB(lessVals['thumb-color']);
+    lessVals['thumb-border-color-alpha'] = getAlpha(lessVals['thumb-border-color']);
+    lessVals['thumb-border-color'] = toRGB(lessVals['thumb-border-color']);
+    lessVals['thumb-shadow-color-alpha'] = getAlpha(lessVals['thumb-shadow-color']);
+    lessVals['thumb-shadow-color'] = toRGB(lessVals['thumb-shadow-color']);
 
-		lessVals['track-color'] = toRGBA(lessVals['track-color']);
-		lessVals['track-border-color'] = toRGBA(lessVals['track-border-color']);
-		lessVals['track-shadow-color'] = toRGBA(lessVals['track-shadow-color']);
+    lessVals['track-color-alpha'] = getAlpha(lessVals['track-color']);
+    lessVals['track-color'] = toRGB(lessVals['track-color']);
+    lessVals['track-border-color-alpha'] = getAlpha(lessVals['track-border-color']);
+    lessVals['track-border-color'] = toRGB(lessVals['track-border-color']);
+    lessVals['track-shadow-color-alpha'] = getAlpha(lessVals['track-shadow-color']);
+    lessVals['track-shadow-color'] = toRGB(lessVals['track-shadow-color']);
 
-		lessVals['track-radius'] += "px";
-		lessVals['track-shadow-size'] += "px";
-		lessVals['track-shadow-blur'] += "px";
-		lessVals['track-height'] += "px";
-		lessVals['track-border-width'] += "px";
+    lessVals['track-radius'] += "px";
+    lessVals['track-shadow-size'] += "px";
+    lessVals['track-shadow-blur'] += "px";
+    lessVals['track-height'] += "px";
+    lessVals['track-border-width'] += "px";
 
-		lessVals['thumb-shadow-size'] += "px";
-		lessVals['thumb-shadow-blur'] += "px";
-		lessVals['thumb-height'] += "px";
-		lessVals['thumb-width'] += "px";
-		lessVals['thumb-border-width'] += "px";
-		lessVals['thumb-radius'] += "px";
+    lessVals['thumb-shadow-size'] += "px";
+    lessVals['thumb-shadow-blur'] += "px";
+    lessVals['thumb-height'] += "px";
+    lessVals['thumb-width'] += "px";
+    lessVals['thumb-border-width'] += "px";
+    lessVals['thumb-radius'] += "px";
 
-		lessVals['contrast'] += "%";
+    lessVals['contrast'] += "%";
 
 		less.modifyVars(lessVals);
 	}
@@ -128,7 +135,7 @@ angular.module("DemoApp")
 	 //    template:function(tElem,tAttr){
 		// // console.log("templating...",tAttr);
 		// // var tmpl = "";
-		
+
 		// // var div = angular.element("<div>");
 		// // div.append("<input>");
 		// // var input = div.find("input");

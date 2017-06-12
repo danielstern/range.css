@@ -7,17 +7,27 @@ angular.module("DemoApp").run(function ($rootScope, presets, $timeout) {
         var slider = $rootScope.slider;
         var lessVals = angular.copy(slider);
 
-        function toRGBA(rgbObject) {
-            return "rgba(" + parseFloat(rgbObject.r) + "," + parseFloat(rgbObject.g) + "," + parseFloat(rgbObject.b) + "," + parseFloat(rgbObject.a) + ")";
+        function toRGB(rgbaObject) {
+            return "rgb(" + parseFloat(rgbaObject.r) + "," + parseFloat(rgbaObject.g) + "," + parseFloat(rgbaObject.b) + ")";
         }
 
-        lessVals['thumb-color'] = toRGBA(lessVals['thumb-color']);
-        lessVals['thumb-border-color'] = toRGBA(lessVals['thumb-border-color']);
-        lessVals['thumb-shadow-color'] = toRGBA(lessVals['thumb-shadow-color']);
+        function getAlpha(rgbaObject) {
+            return parseFloat(rgbaObject.a);
+        }
 
-        lessVals['track-color'] = toRGBA(lessVals['track-color']);
-        lessVals['track-border-color'] = toRGBA(lessVals['track-border-color']);
-        lessVals['track-shadow-color'] = toRGBA(lessVals['track-shadow-color']);
+        lessVals['thumb-color-alpha'] = getAlpha(lessVals['thumb-color']);
+        lessVals['thumb-color'] = toRGB(lessVals['thumb-color']);
+        lessVals['thumb-border-color-alpha'] = getAlpha(lessVals['thumb-border-color']);
+        lessVals['thumb-border-color'] = toRGB(lessVals['thumb-border-color']);
+        lessVals['thumb-shadow-color-alpha'] = getAlpha(lessVals['thumb-shadow-color']);
+        lessVals['thumb-shadow-color'] = toRGB(lessVals['thumb-shadow-color']);
+
+        lessVals['track-color-alpha'] = getAlpha(lessVals['track-color']);
+        lessVals['track-color'] = toRGB(lessVals['track-color']);
+        lessVals['track-border-color-alpha'] = getAlpha(lessVals['track-border-color']);
+        lessVals['track-border-color'] = toRGB(lessVals['track-border-color']);
+        lessVals['track-shadow-color-alpha'] = getAlpha(lessVals['track-shadow-color']);
+        lessVals['track-shadow-color'] = toRGB(lessVals['track-shadow-color']);
 
         lessVals['track-radius'] += "px";
         lessVals['track-shadow-size'] += "px";
