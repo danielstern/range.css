@@ -41,10 +41,10 @@ module.exports = function(grunt) {
             //     livereload: true
             //   }
             // },
-            jstest: {
-                files: ['test/spec/{,*/}*.js'],
-                tasks: ['test:watch']
-            },
+            // jstest: {
+            //     files: ['test/spec/{,*/}*.js'],
+            //     tasks: ['test:watch']
+            // },
             less: {
               files: ['<%= config.app %>/less/*.less'],
               tasks: ['less']
@@ -176,14 +176,14 @@ module.exports = function(grunt) {
         },
 
         // Mocha testing framework configuration options
-        mocha: {
-            all: {
-                options: {
-                    run: true,
-                    urls: ['http://<%= connect.test.options.hostname %>:<%= connect.test.options.port %>/index.html']
-                }
-            }
-        },
+        // mocha: {
+        //     all: {
+        //         options: {
+        //             run: true,
+        //             urls: ['http://<%= connect.test.options.hostname %>:<%= connect.test.options.port %>/index.html']
+        //         }
+        //     }
+        // },
 
         // Add vendor prefixed styles
         autoprefixer: {
@@ -244,16 +244,16 @@ module.exports = function(grunt) {
         },
 
         // The following *-min tasks produce minified files in the dist folder
-        imagemin: {
-            dist: {
-                files: [{
-                    expand: true,
-                    cwd: '<%= config.app %>/images',
-                    src: '{,*/}*.{gif,jpeg,jpg,png}',
-                    dest: '<%= config.dist %>/images'
-                }]
-            }
-        },
+        // imagemin: {
+        //     dist: {
+        //         files: [{
+        //             expand: true,
+        //             cwd: '<%= config.app %>/images',
+        //             src: '{,*/}*.{gif,jpeg,jpg,png}',
+        //             dest: '<%= config.dist %>/images'
+        //         }]
+        //     }
+        // },
 
         svgmin: {
             dist: {
@@ -359,7 +359,7 @@ module.exports = function(grunt) {
             ],
             dist: [
                 'copy:styles',
-                'imagemin',
+                // 'imagemin',
                 'svgmin'
             ]
         }
@@ -401,8 +401,8 @@ module.exports = function(grunt) {
         }
 
         grunt.task.run([
-            'connect:test',
-            'mocha'
+            // 'connect:test',
+            // 'mocha'
         ]);
     });
 
